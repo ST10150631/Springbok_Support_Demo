@@ -29,6 +29,10 @@ The home Page allows the user to select between various menu options. The Announ
 ![image](https://github.com/user-attachments/assets/0e1b6857-9331-4bd2-926b-5efca5109e39)
 The user file a new report. Siya will guide the user and give the user encouragement as they add the report details.
 
+## View Reports:
+![image](https://github.com/user-attachments/assets/c683b5d2-a675-412c-a871-161a2f50e5a0)
+The user can view all reports and their details as well as media after they have submitted the report.
+
 ## Settings:
 ![image](https://github.com/user-attachments/assets/8aaa1571-5997-4e5a-a875-6b7c4fc6b12f)
 The user can change the app colour scheme to better personalize the app to their tastes. 
