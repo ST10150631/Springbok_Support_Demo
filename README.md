@@ -1,4 +1,7 @@
 # PROG7312_POE
+##Github Link:
+https://github.com/ST10150631/PROG7312_POE/blob/master/README.md
+
 ## Introduction:
 Spring Support is a system aimed to aid users in viewing local news and announcements filing service requests and viewing the status of these requests. Springbok Support aims to do this in an engaging and visually pleasing way through the implementation of several engagement strategies. The colours are made to be vibrant and captivating as well as the usage of component movement helps maintain the users attention. The app makes use of a simple UI that will help users make effective use of the app.
 
@@ -25,3 +28,7 @@ The home Page allows the user to select between various menu options. The Announ
 ## File a New Report: 
 ![image](https://github.com/user-attachments/assets/0e1b6857-9331-4bd2-926b-5efca5109e39)
 The user file a new report. Siya will guide the user and give the user encouragement as they add the report details.
+
+## Settings:
+![image](https://github.com/user-attachments/assets/8aaa1571-5997-4e5a-a875-6b7c4fc6b12f)
+The user can change the app colour scheme to better personalize the app to their tastes. 
