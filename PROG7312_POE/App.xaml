@@ -1,0 +1,14 @@
+﻿<Application x:Class="PROG7312_POE.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PROG7312_POE"
+             StartupUri="/MVC/View/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/MVC/View/Styles/LightMode.xaml"/>
+                <ResourceDictionary Source="/MVC/View/Styles/AppStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

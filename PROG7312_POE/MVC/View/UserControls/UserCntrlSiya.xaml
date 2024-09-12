@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PROG7312_POE.MVVM.View.UserControls.UserCntrlSiya"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PROG7312_POE.MVVM.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="600">
+    <Grid>
+        <StackPanel Margin="5" Orientation="Horizontal">
+            <Image Source="/Img/Springbok Mascott.png"  Margin="0" Stretch="UniformToFill" StretchDirection="DownOnly" Height="90" Width="90"/>
+            <Border Background="{DynamicResource  MenuBrush}" CornerRadius="15" Width="490">
+                <StackPanel>
+                    <TextBlock x:Name="SiyaTxt" Style="{DynamicResource TxtPrimary}" 
+           Margin="10,0,0,0" 
+           FontWeight="Light"
+            TextWrapping="Wrap">
+                        Siya Text
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

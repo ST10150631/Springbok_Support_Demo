@@ -1,0 +1,78 @@
+﻿<Page x:Class="PROG7312_POE.MVC.View.Pages.SettingsPg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PROG7312_POE.MVC.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="SettingsPg">
+    <Border CornerRadius="20,20,0,0" >
+        <Grid >
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!-- Title -->
+            <Border CornerRadius="20,20,0,0" Background="{DynamicResource  TertiaryBrush}">
+                <TextBlock Text="Settings: " Style="{DynamicResource TitlePrimary }" HorizontalAlignment="Center"/>
+            </Border>
+            <!-- Content-->
+            <Grid Background="{DynamicResource MenuBrush}" Opacity="0.6" Grid.Row="1"/>
+
+            <Border
+      Grid.Row="1" 
+      Background="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Labels-->
+                    <Grid Height="40"
+                             Grid.Column="1"
+                             VerticalAlignment="Top"
+                             Margin="10,20,0,0">
+                        <TextBlock Text="Change Theme:" Style="{DynamicResource TxtPrimary}" FontWeight="Bold"/>
+
+                    </Grid>
+                    <Grid       Height="40"
+                             Grid.Column="2"
+                             VerticalAlignment="Top"
+                             Margin="10,20,0,0">
+                        <Button x:Name="BtnOriginal" Content="Original" Style="{DynamicResource btnPrimary}" Background="#59FDA0" Foreground="#234041" FontWeight="Bold" Click="BtnOriginal_Click"/>
+
+                    </Grid>
+
+                    <Grid       Height="40"
+                             Grid.Column="3"
+                             VerticalAlignment="Top"
+                             Margin="10,20,0,0">
+                        <Button x:Name="BtnDarkMode" Content="Dark Mode" Style="{DynamicResource btnPrimary}" Background="Black" Foreground="#1db954" FontWeight="Bold" Click="BtnDarkMode_Click" Height="40" VerticalAlignment="Top"/>
+
+                    </Grid>
+
+                    <Grid       Height="40"
+                             Grid.Column="4"
+                             VerticalAlignment="Top"
+                             Margin="10,20,0,0">
+                        <Button x:Name="BtnLightMode" Content="Red Mode" Style="{DynamicResource btnPrimary}" Background="#e5383b" Foreground="#161a1d" FontWeight="Bold" Click="BtnLightMode_Click"/>
+
+                    </Grid>
+                    <!-- Buttons-->
+
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+    </Border>
+</Page>
