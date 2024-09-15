@@ -52,7 +52,6 @@ namespace PROG7312_POE.MVVM.View.Pages
             storyboard = new Storyboard();
             model = new ReportModel();
             InitializeComponent();
-            BtnNext.IsEnabled = false;
             BtnNext.Opacity = 0.5;
             this.SiyaCntrl.SiyaTxt.Text = "  Hi there!\r\n  Welcome to the Springbok Support System.\r\n  My name is Siya the Springbok and I am here to help.\r\n  Let's start with the location of your issue:";
             
@@ -95,38 +94,72 @@ namespace PROG7312_POE.MVVM.View.Pages
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
-            BtnNext.IsEnabled = false;
-            BtnNext.Opacity = 0.5;
+            
             if (currentStep == 1)
             {
-                animateForward(StckPnlLocation, StckPnlCategory);
-                model.ReportLocation = LocationTextBox.Text;
-                currentStep++;
-                StckPnlLocation.Visibility = Visibility.Hidden;
-                this.BtnPrevious.Visibility = Visibility.Visible;
-                this.ProgressBar.Value = 25;
-                this.SiyaCntrl.SiyaTxt.Text = "  Great! Now let's categorize your issue:";
+                if (BtnNext.Opacity == 0.5)
+                {
+                    SiyaCntrl.SiyaTxtBg.Background = Brushes.Red;
+                    SiyaCntrl.SiyaTxt.Text = "  Please enter a location to proceed.";
+                }
+                else
+                {
+                    SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
+                    animateForward(StckPnlLocation, StckPnlCategory);
+                    model.ReportLocation = LocationTextBox.Text;
+                    currentStep++;
+                    StckPnlLocation.Visibility = Visibility.Hidden;
+                    this.BtnPrevious.Visibility = Visibility.Visible;
+                    this.ProgressBar.Value = 25;
+                    this.SiyaCntrl.SiyaTxt.Text = "  Great! Now let's categorize your issue:";
+
+                    BtnNext.Opacity = 0.5;
+                }
+
             }
             else if (currentStep == 2)
             {
-                model.ReportType = CategoryComboBox.SelectionBoxItem.ToString();
-                animateForward(StckPnlCategory, StckPnlDescription);
-                currentStep++;
-                StckPnlCategory.Visibility = Visibility.Hidden;
-                this.ProgressBar.Value = 50;
-                this.SiyaCntrl.SiyaTxt.Text = " Almost there... \nCan you please offer a description of the issue.";
+                if (BtnNext.Opacity == 0.5)
+                {
+                    SiyaCntrl.SiyaTxtBg.Background = Brushes.Red;
+                    SiyaCntrl.SiyaTxt.Text = "  Please select a category to proceed";
+                }
+                else
+                {
+                    SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
+                    model.ReportType = CategoryComboBox.SelectionBoxItem.ToString();
+                    animateForward(StckPnlCategory, StckPnlDescription);
+                    currentStep++;
+                    StckPnlCategory.Visibility = Visibility.Hidden;
+                    this.ProgressBar.Value = 50;
+                    this.SiyaCntrl.SiyaTxt.Text = " Almost there... \nCan you please offer a description of the issue.";
+
+                    BtnNext.Opacity = 0.5;
+                }
+
             }
             else if (currentStep == 3)
             {
-                TextRange TxtRange = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd);
-                model.ReportDescription = TxtRange.Text;
-                animateForward(StckPnlDescription, StckPnlMedia);
-                currentStep++;
-                StckPnlDescription.Visibility = Visibility.Collapsed;
-                this.ProgressBar.Value = 75;
-                this.SiyaCntrl.SiyaTxt.Text = "We're Right there all we need is a photo from you and we're Done!.";
-                BtnNext.IsEnabled = true;
-                this.BtnNext.Content = "Submit";
+                if (BtnNext.Opacity == 0.5)
+                {
+                    SiyaCntrl.SiyaTxtBg.Background = Brushes.Red;
+                    SiyaCntrl.SiyaTxt.Text = "  Please give a description of the issue to proceed.";
+                }
+                else
+                {
+                    SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
+                    TextRange TxtRange = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd);
+                    model.ReportDescription = TxtRange.Text;
+                    animateForward(StckPnlDescription, StckPnlMedia);
+                    currentStep++;
+                    StckPnlDescription.Visibility = Visibility.Collapsed;
+                    this.ProgressBar.Value = 75;
+                    this.SiyaCntrl.SiyaTxt.Text = "We're Right there all we need is a photo or PDF from you and we're Done!. *Optional*";
+                    BtnNext.IsEnabled = true;
+                    BtnPrevious.Visibility = Visibility.Hidden;
+                    this.BtnNext.Content = "Submit";
+                }
+
             }
             else if (currentStep == 4)
             {
@@ -138,7 +171,6 @@ namespace PROG7312_POE.MVVM.View.Pages
                 this.BtnNext.Visibility = Visibility.Hidden;
 
             };
-
 
 
         }

@@ -15,8 +15,6 @@
     <Color x:Key="Menu">#f9f7f3</Color>
     <SolidColorBrush x:Key="MenuBrush">#f9f7f3</SolidColorBrush>
 
-
-
     <Color x:Key="Secondary">#535353</Color>
     <SolidColorBrush x:Key="SecondaryBrush">#535353</SolidColorBrush>
 

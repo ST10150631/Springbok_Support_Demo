@@ -49,7 +49,7 @@ namespace PROG7312_POE.MVC.View.Pages
                 }
                 else
                 {
-                    MessageBox.Show("Media type not supported", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Media type not supported or there is no media for this report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }catch
             {

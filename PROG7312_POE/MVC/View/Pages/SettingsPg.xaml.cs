@@ -40,5 +40,15 @@ namespace PROG7312_POE.MVC.View.Pages
         {
             AppThemes.ChangeTheme(new Uri("MVC/View/Styles/Red.xaml", UriKind.Relative));
         }
+
+        private void BtnYellow_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemes.ChangeTheme(new Uri("MVC/View/Styles/YellowStyle.xaml", UriKind.Relative));
+        }
+
+        private void BtnBlue_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemes.ChangeTheme(new Uri("MVC/View/Styles/BlueStyle.xaml", UriKind.Relative));
+        }
     }
 }

@@ -29,10 +29,11 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="170"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <!-- Labels-->
@@ -63,7 +64,21 @@
                              Grid.Column="4"
                              VerticalAlignment="Top"
                              Margin="10,20,0,0">
-                        <Button x:Name="BtnLightMode" Content="Red Mode" Style="{DynamicResource btnPrimary}" Background="#e5383b" Foreground="#161a1d" FontWeight="Bold" Click="BtnLightMode_Click"/>
+                        <Button x:Name="BtnLightMode" Content="Red" Style="{DynamicResource btnPrimary}" Background="#e5383b" Foreground="#161a1d" FontWeight="Bold" Click="BtnLightMode_Click"/>
+
+                    </Grid>
+                    <Grid       Height="40"
+                         Grid.Column="5"
+                        VerticalAlignment="Top"
+                            Margin="10,20,0,0">
+                        <Button x:Name="BtnYellow" Content="Yellow" Style="{DynamicResource btnPrimary}" Background="#ffe600" Foreground="#161a1d" FontWeight="Bold" Click="BtnYellow_Click" />
+
+                    </Grid>
+                    <Grid       Height="40"
+                             Grid.Column="6"
+                            VerticalAlignment="Top"
+                                Margin="10,20,0,0">
+                        <Button x:Name="BtnBlue" Content="Blue" Style="{DynamicResource btnPrimary}" Background="#00a2ff" Foreground="#161a1d" FontWeight="Bold" Click="BtnBlue_Click" />
 
                     </Grid>
                     <!-- Buttons-->

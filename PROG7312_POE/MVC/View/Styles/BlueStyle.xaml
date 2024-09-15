@@ -1,28 +1,27 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
     <!-- Colours -->
     <!--*******************************************************************************************************************************************************************************-->
 
 
-    <Color x:Key="Primary">#161a1d</Color>
-    <SolidColorBrush x:Key="PrimaryBrush">#161a1d</SolidColorBrush>
+    <Color x:Key="Primary">#141e2b</Color>
+    <SolidColorBrush x:Key="PrimaryBrush">#141e2b</SolidColorBrush>
 
-    <Color x:Key="Tertiary" >#e5383b</Color>
-    <SolidColorBrush x:Key="TertiaryBrush">#e5383b</SolidColorBrush>
+    <Color x:Key="Tertiary" >#00a2ff</Color>
+    <SolidColorBrush x:Key="TertiaryBrush">#00a2ff</SolidColorBrush>
 
-    <Color x:Key="Menu">#660708</Color>
-    <SolidColorBrush x:Key="MenuBrush">#660708</SolidColorBrush>
+    <Color x:Key="Menu">#0d6294</Color>
+    <SolidColorBrush x:Key="MenuBrush">#0d6294</SolidColorBrush>
 
 
 
-    <Color x:Key="Secondary">#ba181b</Color>
-    <SolidColorBrush x:Key="SecondaryBrush">#ba181b</SolidColorBrush>
+    <Color x:Key="Secondary">#10e2e6</Color>
+    <SolidColorBrush x:Key="SecondaryBrush">#10e2e6</SolidColorBrush>
 
     <Color x:Key="Foreground">#f5f3f4</Color>
     <SolidColorBrush x:Key="ForegroundBrush">#f5f3f4</SolidColorBrush>
 
-    
+
     <Color x:Key="RufousRed">#FF5335</Color>
     <SolidColorBrush x:Key="RufousRedBrush">#FF5335</SolidColorBrush>
     <!--*******************************************************************************************************************************************************************************-->

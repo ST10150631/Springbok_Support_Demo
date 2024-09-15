@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="5" Orientation="Horizontal">
             <Image Source="/Img/Springbok Mascott.png"  Margin="0" Stretch="UniformToFill" StretchDirection="DownOnly" Height="90" Width="90"/>
-            <Border Background="{DynamicResource  MenuBrush}" CornerRadius="15" Width="490">
+            <Border x:Name="SiyaTxtBg" Background="{DynamicResource  MenuBrush}" CornerRadius="15" Width="490">
                 <StackPanel>
                     <TextBlock x:Name="SiyaTxt" Style="{DynamicResource TxtPrimary}" 
            Margin="10,0,0,0" 

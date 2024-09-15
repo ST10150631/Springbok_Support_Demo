@@ -22,6 +22,10 @@ namespace PROG7312_POE.MVC.Controller
         /// Holds the reports in memmory
         /// </summary>
         private ObservableCollection<ReportModel> _reportData;
+        /// <summary>
+        /// Stores data in a list to be used for searching and for rubric purposes 
+        /// </summary>
+        private List <ReportModel> ReportList = new List<ReportModel>();
 
         public readonly string[] ImgExtensions = { ".jpg", ".jpeg", ".gif", ".bmp", ".png" };
         /// <summary>
@@ -76,6 +80,7 @@ namespace PROG7312_POE.MVC.Controller
             report.ReportDate = DateTime.Now;
             report.ReportStatus = "Filed";
             ReportData.Add(report);
+            ReportList.Add(report);
             OnPropertyChanged(nameof(ReportData));
         }
         //======================================================= End of Method ===================================================
