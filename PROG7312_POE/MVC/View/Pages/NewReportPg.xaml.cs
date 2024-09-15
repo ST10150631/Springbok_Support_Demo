@@ -156,7 +156,6 @@ namespace PROG7312_POE.MVVM.View.Pages
                     this.ProgressBar.Value = 75;
                     this.SiyaCntrl.SiyaTxt.Text = "We're Right there all we need is a photo or PDF from you and we're Done!. *Optional*";
                     BtnNext.IsEnabled = true;
-                    BtnPrevious.Visibility = Visibility.Hidden;
                     this.BtnNext.Content = "Submit";
                 }
 
@@ -168,6 +167,7 @@ namespace PROG7312_POE.MVVM.View.Pages
                 this.ProgressBar.Value = 100;
                 StckPnlSubmit.Visibility = Visibility.Visible;
                 StckPnlMedia.Visibility = Visibility.Collapsed;
+                BtnPrevious.Visibility = Visibility.Hidden;
                 this.BtnNext.Visibility = Visibility.Hidden;
 
             };
@@ -226,6 +226,7 @@ namespace PROG7312_POE.MVVM.View.Pages
             BtnNext.Opacity = 1;
             if (currentStep == 2)
             {
+                SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
                 animateBack(StckPnlCategory, StckPnlLocation);
                 currentStep--;
                 StckPnlCategory.Visibility = Visibility.Collapsed;
@@ -235,6 +236,7 @@ namespace PROG7312_POE.MVVM.View.Pages
             }
             else if (currentStep == 3)
             {
+                SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
                 animateBack(StckPnlDescription, StckPnlCategory);
                 currentStep--;
                 StckPnlDescription.Visibility = Visibility.Collapsed;
@@ -244,6 +246,7 @@ namespace PROG7312_POE.MVVM.View.Pages
             }
             else if (currentStep == 4)
             {
+                SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
                 animateBack(StckPnlMedia, StckPnlDescription);
                 currentStep--;
                 StckPnlMedia.Visibility = Visibility.Collapsed;
@@ -306,12 +309,10 @@ namespace PROG7312_POE.MVVM.View.Pages
         {
             if (LocationTextBox.Text == "")
             {
-                BtnNext.IsEnabled = false;
                 BtnNext.Opacity = 0.5;
             }
             else
             {
-                BtnNext.IsEnabled = true;
                 BtnNext.Opacity = 1;
             }
         }
@@ -347,7 +348,9 @@ namespace PROG7312_POE.MVVM.View.Pages
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void DescriptionRichTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (LocationTextBox.Text == "")
+            TextRange TxtRange = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd);
+            string text = TxtRange.Text.Trim();
+            if (string.IsNullOrEmpty(text))
             {
                 BtnNext.IsEnabled = false;
                 BtnNext.Opacity = 0.5;

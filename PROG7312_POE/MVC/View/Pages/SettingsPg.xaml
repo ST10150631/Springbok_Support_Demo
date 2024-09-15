@@ -29,12 +29,12 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="170"/>
-                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="140"/>
                         <ColumnDefinition Width="180"/>
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="170"/>
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="120" />
                     </Grid.ColumnDefinitions>
                     <!-- Labels-->
                     <Grid Height="40"
