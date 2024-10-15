@@ -9,5 +9,6 @@ namespace PROG7312_POE.MVC.Controller
     public static class MainController
     {
         public static ReportController reportController = new ReportController();
+        public static NewsController newsController = new NewsController();
     }
 }

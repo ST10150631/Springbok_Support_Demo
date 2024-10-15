@@ -1,0 +1,361 @@
+﻿<Page x:Class="PROG7312_POE.MVC.View.Pages.AddEventPg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PROG7312_POE.MVC.View.Pages"
+       xmlns:fa ="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      mc:Ignorable="d" 
+      Background="AliceBlue"
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="AddEventPg">
+
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            
+            <StackPanel Orientation="Horizontal" Height="100" Margin="0" HorizontalAlignment="Center" Width="auto" >
+                <RadioButton x:Name="RbtnEvent"  Style="{DynamicResource RbtnSwitch}" Content="Add Event" Margin="5" Padding="10" Checked="RbtnEvent_Checked" />
+                <RadioButton x:Name="RbtnAnnouncement" Style="{DynamicResource RbtnSwitch}" Content="Add Announcement" Margin="5" Padding="10" Checked="RbtnAnnouncement_Checked" />
+            </StackPanel>
+            
+
+            <Grid Margin="5" x:Name="EventGrd" Visibility="Visible" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Event Name *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="EventTxtName" Grid.Column="1" Style="{DynamicResource TxtBxPrimary}" Margin="0,10,0,10" />
+
+                <TextBlock Text="Event Category " Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="CmboBxCategory" Style="{DynamicResource TxtBxPrimary}" Grid.Column="1" Grid.Row="1"   Margin="0,10,0,10" />
+
+
+                <TextBlock Text="Event Description *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="EventTxtDescription" Grid.Column="1" Grid.Row="2" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <TextBlock Text="Event Date *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="Start Date" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Margin="10,10,10,10"/>
+                    <DatePicker x:Name="EventDatePickerStart" Grid.Column="1" Grid.Row="3" Margin="0,10,0,10" />
+                    
+                    <TextBlock Text="End Date" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Margin="40,10,10,10"/>
+                    <DatePicker x:Name="EventDatePickerEnd" Grid.Column="1" Grid.Row="3" Margin="0,10,0,10" />
+
+                </StackPanel>
+                <TextBlock Text="Event Time *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                    <TextBlock Text="Start Time:" FontWeight="Bold" Margin="10,10,0,15" Foreground="{DynamicResource ForegroundBrush}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="StartHourComboBox" Width="50" Margin="10,10,5,10" >
+                            <!-- Populate hours (00 to 23) -->
+                            <ComboBoxItem Content="00"/>
+                            <ComboBoxItem Content="01"/>
+                            <ComboBoxItem Content="02"/>
+                            <ComboBoxItem Content="03"/>
+                            <ComboBoxItem Content="04"/>
+                            <ComboBoxItem Content="05"/>
+                            <ComboBoxItem Content="06"/>
+                            <ComboBoxItem Content="07"/>
+                            <ComboBoxItem Content="08"  IsSelected="True" />
+                            <ComboBoxItem Content="09"/>
+                            <ComboBoxItem Content="10"/>
+                            <ComboBoxItem Content="11"/>
+                            <ComboBoxItem Content="12"/>
+                            <ComboBoxItem Content="13"/>
+                            <ComboBoxItem Content="14"/>
+                            <ComboBoxItem Content="15"/>
+                            <ComboBoxItem Content="16"/>
+                            <ComboBoxItem Content="17"/>
+                            <ComboBoxItem Content="18"/>
+                            <ComboBoxItem Content="19"/>
+                            <ComboBoxItem Content="20"/>
+                            <ComboBoxItem Content="21"/>
+                            <ComboBoxItem Content="22"/>
+                            <ComboBoxItem Content="23"/>
+                        </ComboBox>
+                        <TextBlock Text=":" Margin="10,10,5,10" Style="{DynamicResource TxtSecondary}"/>
+                        <ComboBox x:Name="StartMinuteComboBox" Width="50"  Margin="5,10,5,10">
+                            <!-- Populate minutes (00 to 59) -->
+                            <ComboBoxItem Content="00"  IsSelected="True"/>
+                            <ComboBoxItem Content="01"/>
+                            <ComboBoxItem Content="02"/>
+                            <ComboBoxItem Content="03"/>
+                            <ComboBoxItem Content="04"/>
+                            <ComboBoxItem Content="05"/>
+                            <ComboBoxItem Content="06"/>
+                            <ComboBoxItem Content="07"/>
+                            <ComboBoxItem Content="08"/>
+                            <ComboBoxItem Content="09"/>
+                            <ComboBoxItem Content="10"/>
+                            <ComboBoxItem Content="11"/>
+                            <ComboBoxItem Content="12"/>
+                            <ComboBoxItem Content="13"/>
+                            <ComboBoxItem Content="14"/>
+                            <ComboBoxItem Content="15"/>
+                            <ComboBoxItem Content="16"/>
+                            <ComboBoxItem Content="17"/>
+                            <ComboBoxItem Content="18"/>
+                            <ComboBoxItem Content="19"/>
+                            <ComboBoxItem Content="20"/>
+                            <ComboBoxItem Content="21"/>
+                            <ComboBoxItem Content="22"/>
+                            <ComboBoxItem Content="23"/>
+                            <ComboBoxItem Content="24"/>
+                            <ComboBoxItem Content="25"/>
+                            <ComboBoxItem Content="26"/>
+                            <ComboBoxItem Content="27"/>
+                            <ComboBoxItem Content="28"/>
+                            <ComboBoxItem Content="29"/>
+                            <ComboBoxItem Content="30"/>
+                            <ComboBoxItem Content="31"/>
+                            <ComboBoxItem Content="32"/>
+                            <ComboBoxItem Content="33"/>
+                            <ComboBoxItem Content="34"/>
+                            <ComboBoxItem Content="35"/>
+                            <ComboBoxItem Content="36"/>
+                            <ComboBoxItem Content="37"/>
+                            <ComboBoxItem Content="38"/>
+                            <ComboBoxItem Content="39"/>
+                            <ComboBoxItem Content="40"/>
+                            <ComboBoxItem Content="41"/>
+                            <ComboBoxItem Content="42"/>
+                            <ComboBoxItem Content="43"/>
+                            <ComboBoxItem Content="44"/>
+                            <ComboBoxItem Content="45"/>
+                            <ComboBoxItem Content="46"/>
+                            <ComboBoxItem Content="47"/>
+                            <ComboBoxItem Content="48"/>
+                            <ComboBoxItem Content="49"/>
+                            <ComboBoxItem Content="50"/>
+                            <ComboBoxItem Content="51"/>
+                            <ComboBoxItem Content="52"/>
+                            <ComboBoxItem Content="53"/>
+                            <ComboBoxItem Content="54"/>
+                            <ComboBoxItem Content="55"/>
+                            <ComboBoxItem Content="56"/>
+                            <ComboBoxItem Content="57"/>
+                            <ComboBoxItem Content="58"/>
+                            <ComboBoxItem Content="59"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <TextBlock Text="End Time:" FontWeight="Bold" Margin="10,10,0,15"  Foreground="{DynamicResource ForegroundBrush}" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="EndHourComboBox" Width="50" Margin="10,10,5,10">
+                            <!-- Same hour options as start time -->
+                            <ComboBoxItem Content="00"/>
+                            <ComboBoxItem Content="01"/>
+                            <ComboBoxItem Content="02"/>
+                            <ComboBoxItem Content="03"/>
+                            <ComboBoxItem Content="04"/>
+                            <ComboBoxItem Content="05"/>
+                            <ComboBoxItem Content="06"/>
+                            <ComboBoxItem Content="07"/>
+                            <ComboBoxItem Content="08"/>
+                            <ComboBoxItem Content="09"/>
+                            <ComboBoxItem Content="10"/>
+                            <ComboBoxItem Content="11"/>
+                            <ComboBoxItem Content="12"/>
+                            <ComboBoxItem Content="13"/>
+                            <ComboBoxItem Content="14"/>
+                            <ComboBoxItem Content="15"/>
+                            <ComboBoxItem Content="16"/>
+                            <ComboBoxItem Content="17"/>
+                            <ComboBoxItem Content="18"  IsSelected="True"/>
+                            <ComboBoxItem Content="19"/>
+                            <ComboBoxItem Content="20"/>
+                            <ComboBoxItem Content="21"/>
+                            <ComboBoxItem Content="22"/>
+                            <ComboBoxItem Content="23"/>
+                        </ComboBox>
+                        <TextBlock Text=":" Margin="10,10,5,10" Style="{DynamicResource TxtSecondary}"/>
+                        <ComboBox x:Name="EndMinuteComboBox" Width="50" Margin="10,10,5,10" >
+                            <!-- Same minute options as start time -->
+                            <ComboBoxItem Content="00" IsSelected="True"/>
+                            <ComboBoxItem Content="01"/>
+                            <ComboBoxItem Content="02"/>
+                            <ComboBoxItem Content="03"/>
+                            <ComboBoxItem Content="04"/>
+                            <ComboBoxItem Content="05"/>
+                            <ComboBoxItem Content="06"/>
+                            <ComboBoxItem Content="07"/>
+                            <ComboBoxItem Content="08"/>
+                            <ComboBoxItem Content="09"/>
+                            <ComboBoxItem Content="10"/>
+                            <ComboBoxItem Content="11"/>
+                            <ComboBoxItem Content="12"/>
+                            <ComboBoxItem Content="13"/>
+                            <ComboBoxItem Content="14"/>
+                            <ComboBoxItem Content="15"/>
+                            <ComboBoxItem Content="16"/>
+                            <ComboBoxItem Content="17"/>
+                            <ComboBoxItem Content="18"/>
+                            <ComboBoxItem Content="19"/>
+                            <ComboBoxItem Content="20"/>
+                            <ComboBoxItem Content="21"/>
+                            <ComboBoxItem Content="22"/>
+                            <ComboBoxItem Content="23"/>
+                            <ComboBoxItem Content="24"/>
+                            <ComboBoxItem Content="25"/>
+                            <ComboBoxItem Content="26"/>
+                            <ComboBoxItem Content="27"/>
+                            <ComboBoxItem Content="28"/>
+                            <ComboBoxItem Content="29"/>
+                            <ComboBoxItem Content="30"/>
+                            <ComboBoxItem Content="31"/>
+                            <ComboBoxItem Content="32"/>
+                            <ComboBoxItem Content="33"/>
+                            <ComboBoxItem Content="34"/>
+                            <ComboBoxItem Content="35"/>
+                            <ComboBoxItem Content="36"/>
+                            <ComboBoxItem Content="37"/>
+                            <ComboBoxItem Content="38"/>
+                            <ComboBoxItem Content="39"/>
+                            <ComboBoxItem Content="40"/>
+                            <ComboBoxItem Content="41"/>
+                            <ComboBoxItem Content="42"/>
+                            <ComboBoxItem Content="43"/>
+                            <ComboBoxItem Content="44"/>
+                            <ComboBoxItem Content="45"/>
+                            <ComboBoxItem Content="46"/>
+                            <ComboBoxItem Content="47"/>
+                            <ComboBoxItem Content="48"/>
+                            <ComboBoxItem Content="49"/>
+                            <ComboBoxItem Content="50"/>
+                            <ComboBoxItem Content="51"/>
+                            <ComboBoxItem Content="52"/>
+                            <ComboBoxItem Content="53"/>
+                            <ComboBoxItem Content="54"/>
+                            <ComboBoxItem Content="55"/>
+                            <ComboBoxItem Content="56"/>
+                            <ComboBoxItem Content="57"/>
+                            <ComboBoxItem Content="58"/>
+                            <ComboBoxItem Content="59"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                </StackPanel>
+                <TextBlock Text="Event Venue *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="EventTxtVenue" Grid.Column="1" Grid.Row="5" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <TextBlock Text="Website" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="EventTxtWebsite" Grid.Column="1" Grid.Row="6" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <TextBlock Text="Event Organizer *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="EventTxtOrganizer" Grid.Column="1" Grid.Row="7" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <Button x:Name="btnEventAddMedia" Content="Add Event Media" Style="{DynamicResource btnPrimary}" Margin="10" Grid.Row="8" Click="btnAddMedia_Click"  />
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="8">
+                    <TextBlock x:Name="LblEventMedia" Text="No Media Added" Style="{DynamicResource TxtSecondary}" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                    <Button x:Name="btnEventRemoveMedia" Style="{DynamicResource HomeButtons}"  Margin="10" Height="30" Background="{DynamicResource RufousRedBrush}" Click="btnRemoveMedia_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Trash" Width="16" Height="16" Margin="0,0,5,0" Foreground="{DynamicResource PrimaryBrush}" />
+                            <TextBlock Text="Remove" Foreground="{DynamicResource PrimaryBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+
+                <Button x:Name="btnEventAddLogo" Content="Add Organizer Logo" Style="{DynamicResource btnPrimary}" Margin="10"  Grid.Row="9" Click="btnAddLogo_Click"/>
+                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="9" >
+                    <TextBlock x:Name="LblLogo" Text="No Media Added" Style="{DynamicResource TxtSecondary}" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                    <Button x:Name="btnEventRemoveLogo" Style="{DynamicResource HomeButtons}" Height="30" Background="{DynamicResource RufousRedBrush}" Margin="10" Click="btnRemoveLogo_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Trash" Width="16" Height="16" Margin="0,0,5,0" Foreground="{DynamicResource PrimaryBrush}" />
+                            <TextBlock Text="Remove" Foreground="{DynamicResource PrimaryBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+                
+
+
+            </Grid>
+            <!-- Announcment -->
+            <Grid Margin="5" x:Name="AnnouncementGrd" Visibility="Collapsed" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Text="Announcement Title *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="TxtTitle" Grid.Column="1" Style="{DynamicResource TxtBxPrimary}" Margin="0,10,0,10" />
+                <!-- Description -->
+                <TextBlock Text="Description *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="TxtDescription" Grid.Column="1" Grid.Row="1" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <!-- Event -->
+                <TextBlock Text="Related Event" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <ComboBox x:Name="CmboBxEvent"  Grid.Column="1" Grid.Row="2"/>
+
+                <!-- Location -->
+                <TextBlock Text="Location *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="TxtLocation" Grid.Column="1" Grid.Row="4" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+                
+                <!-- Website -->
+                <TextBlock Text="Website" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="TxtWebsite" Grid.Column="1" Grid.Row="5" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <!-- Author -->
+                <TextBlock Text="Author *" Style="{DynamicResource TxtSecondary}" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                <TextBox x:Name="TxtAuthor" Grid.Column="1" Grid.Row="6" Style="{DynamicResource TxtBxPrimary}"  Margin="0,10,0,10"/>
+
+                <!-- Add Media for Announcment -->
+                <Button x:Name="btnAddMedia" Content="Add Media" Style="{DynamicResource btnPrimary}" Margin="10" Grid.Row="7" Click="btnAddAnnouncementMedia_Click"  />
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="7">
+                    <TextBlock x:Name="LblPostMedia" Text="Media Added" Style="{DynamicResource TxtSecondary}" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+                    <Button x:Name="btnRemoveMedia" Style="{DynamicResource HomeButtons}"  Margin="10" Height="30" Background="{DynamicResource RufousRedBrush}" Click="btnRemoveMedia_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Trash" Width="16" Height="16" Margin="0,0,5,0" Foreground="{DynamicResource PrimaryBrush}" />
+                            <TextBlock Text="Remove" Foreground="{DynamicResource PrimaryBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+
+
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btncancel" Content="Cancel" Style="{DynamicResource btnPrimary}" Width="200" Grid.Column="1" Grid.Row="7" Margin="10,10,0,10" Background="{DynamicResource RufousRedBrush}" Click="btncancel_Click" />
+                <Button x:Name="btnSubmit" Content="Submit" Style="{DynamicResource btnPrimary}" Width="200" Grid.Column="1" Grid.Row="7" Margin="10,10,0,10" Background="{DynamicResource TertiaryBrush}" Click="btnSubmit_Click"/>
+            </StackPanel>
+
+
+
+
+        </StackPanel>
+
+
+    </ScrollViewer>
+
+
+</Page>

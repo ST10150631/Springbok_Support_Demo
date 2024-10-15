@@ -18,6 +18,7 @@ namespace PROG7312_POE.MVC.Controller
 {
     public class ReportController : INotifyPropertyChanged
     {
+        private HashSet <string> EventCategries = new HashSet <string>();
         /// <summary>
         /// Holds the reports in memmory
         /// </summary>

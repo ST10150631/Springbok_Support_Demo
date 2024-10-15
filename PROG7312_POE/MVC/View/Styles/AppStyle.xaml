@@ -18,9 +18,43 @@
     <!--*******************************************************************************************************************************************************************************-->
     <!-- Home Buttons -->
 
+    <!-- Category Buttons -->
+    <Style TargetType="Button" x:Key="CategoryButtonStyle">
+        <Setter Property="Height" Value="135"/>
+        <Setter Property="Width" Value="135"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
 
-   
+    <!-- Event/ Announcement RadioButtons -->
+    <Style x:Key="RbtnSwitch" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource TertiaryBrush}"/>
+        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="textBlock"
+                                       Text="{TemplateBinding Content}"
+                                       VerticalAlignment="Center" 
+                                       Background="{DynamicResource TertiaryBrush}" 
+                                       Foreground="{DynamicResource PrimaryBrush}"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="textBlock" Property="Foreground" Value="{DynamicResource MenuBrush}"/>
+                            <Setter TargetName="textBlock"  Property="Background" Value="{DynamicResource SecondaryBrush}" />
+                            <Setter TargetName="textBlock" Property="TextDecorations" Value="{x:Static TextDecorations.Underline}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
 
+    </Style>
 
     <!-- Menu Button For Report-->
     <Style x:Key="MenuReportBtnStyle" TargetType="Button">
@@ -77,15 +111,15 @@
 
                                 <!-- Filter Overlay -->
                                 <Border x:Name="FilterOverlay"
-                            Background="{DynamicResource SecondaryBrush}"
-                            Opacity="0.8"
-                            Width="{TemplateBinding Width}" 
-                            Height="{TemplateBinding Height}"
-                            Visibility="Visible"/>
+                                    Background="{DynamicResource MenuBrush}"
+                                    Opacity="0.8"
+                                    Width="{TemplateBinding Width}" 
+                                    Height="{TemplateBinding Height}"
+                                    Visibility="Visible"/>
                                 <TextBlock x:Name="MenuText"
                                    Text="Report An Issue"
+                                   TextWrapping="Wrap"
                                    Style="{DynamicResource TitleTertiary}"
-                                           Foreground="{DynamicResource MenuBrush}"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                             </Grid>
@@ -109,22 +143,21 @@
                     <Grid>
                         <!-- Image -->
                         <Image x:Name="MenuImage"
-                               Source="/Img/NewsBtnImage.jpg" 
-                               Stretch="Fill" 
-                               Width="{TemplateBinding Width}" 
-                               Height="{TemplateBinding Height}"/>
+                           Source="/Img/NewsBtnImage.jpg" 
+                           Stretch="Fill" 
+                           Width="{TemplateBinding Width}" 
+                           Height="{TemplateBinding Height}"/>
 
                         <!-- Filter Overlay -->
                         <Border x:Name="FilterOverlay"
-                                Background="Gray"
-                                Opacity="0.8"
-                                Width="{TemplateBinding Width}" 
-                                Height="{TemplateBinding Height}"
-                                Visibility="Visible"/>
-                        <fa:IconImage Icon="Lock" Foreground="{DynamicResource MenuBrush}" Margin="10"/>
+                            Background="{DynamicResource MenuBrush}"
+                            Opacity="0.8"
+                            Width="{TemplateBinding Width}" 
+                            Height="{TemplateBinding Height}"
+                            Visibility="Visible"/>
                         <TextBlock x:Name="MenuText"
-                               Text="Announcments and Local Events"
-                                   TextWrapping="Wrap"
+                               Text="Announcements and Local Events"
+                               TextWrapping="Wrap"
                                Style="{DynamicResource TitleTertiary}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -141,26 +174,25 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Grid>
-                                <!-- GIF Image -->
+                                <!-- Image -->
                                 <Image x:Name="MenuImage"
-                       Source="/Img/NewsBtnImage.jpg" 
-                       Stretch="Fill" 
-                       Width="{TemplateBinding Width}" 
-                       Height="{TemplateBinding Height}"/>
+                                   Source="/Img/NewsBtnImage.jpg" 
+                                   Stretch="Fill" 
+                                   Width="{TemplateBinding Width}" 
+                                   Height="{TemplateBinding Height}"/>
 
                                 <!-- Filter Overlay -->
                                 <Border x:Name="FilterOverlay"
-                        Background="Black"
-                        Opacity="0.8"
-                        Width="{TemplateBinding Width}" 
-                        Height="{TemplateBinding Height}"
-                        Visibility="Visible"/>
-                                <fa:IconImage Icon="Lock" Foreground="{DynamicResource MenuBrush}" Margin="10"/>
+                                    Background="{DynamicResource MenuBrush}"
+                                    Opacity="0.8"
+                                    Width="{TemplateBinding Width}" 
+                                    Height="{TemplateBinding Height}"
+                                    Visibility="Visible"/>
                                 <TextBlock x:Name="MenuText"
-                                       Text="Announcments and Local Events"
-                                   TextWrapping="Wrap"
+                                       Text="Announcements and Local Events"
+                                       TextWrapping="Wrap"
                                        Style="{DynamicResource TitleTertiary}"
-                                               Foreground="{DynamicResource MenuBrush}"
+                                       Foreground="{DynamicResource TertiaryBrush}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                             </Grid>
@@ -170,6 +202,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
 
     <!-- Menu Button For Service Status-->
     <Style x:Key="MenuStatusBtnStyle" TargetType="Button">

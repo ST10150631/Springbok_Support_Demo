@@ -166,7 +166,7 @@
 
 
                         <!-- Events and announcements  radio Btn -->
-                        <RadioButton x:Name="RbtnEvents" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnEvents_Checked" IsEnabled="False" Background="Gray" >
+                        <RadioButton x:Name="RbtnEvents" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnEvents_Checked">
 
                             <StackPanel Orientation="Horizontal" >
                                 <fa:IconImage Icon="Newspaper" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>

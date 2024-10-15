@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="BtnReport" Style="{StaticResource MenuReportBtnStyle}" Click="BtnReport_Click"   />
-        <Button Style="{StaticResource MenuNewsBtnStyle}"   Grid.Column="1"  />
+        <Button Style="{StaticResource MenuNewsBtnStyle}"   Grid.Column="1" Click="Button_Click"  />
         <Button Style="{StaticResource MenuStatusBtnStyle}" Grid.Column="2" />
     </Grid>
 </Page>

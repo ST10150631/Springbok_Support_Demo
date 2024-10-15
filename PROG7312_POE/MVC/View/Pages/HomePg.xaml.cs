@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PROG7312_POE.MVVM.View.Styles;
+using PROG7312_POE.MVC.View.Pages;
 
 namespace PROG7312_POE.MVVM.View.Pages
 {
@@ -34,6 +35,14 @@ namespace PROG7312_POE.MVVM.View.Pages
             NewReportPg newReportPg = new NewReportPg();
             parentWindow.RbtnReport.IsChecked = true;
             parentWindow.ContentPane.Content = newReportPg;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            NewsPage newsPg = new NewsPage();
+            parentWindow.RbtnReport.IsChecked = true;
+            parentWindow.ContentPane.Content = newsPg;
         }
     }
 }

@@ -66,6 +66,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVC\View\Pages\AddEventPg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVC\View\Pages\HomePg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -75,6 +79,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVC\View\Pages\NewReportPg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVC\View\Pages\NewsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,11 +133,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVC\Controller\AppThemes.cs" />
+    <Compile Include="MVC\Controller\NewsController.cs" />
     <Compile Include="MVC\Controller\ReportController.cs" />
     <Compile Include="MVC\Controller\MainController.cs" />
+    <Compile Include="MVC\Model\AnnouncementModel.cs" />
+    <Compile Include="MVC\Model\EventsModel.cs" />
+    <Compile Include="MVC\Model\MediaModel.cs" />
     <Compile Include="MVC\Model\ReportModel.cs" />
     <Compile Include="MVC\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVC\View\Pages\AddEventPg.xaml.cs">
+      <DependentUpon>AddEventPg.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVC\View\Pages\HomePg.xaml.cs">
       <DependentUpon>HomePg.xaml</DependentUpon>
@@ -139,6 +154,9 @@
     </Compile>
     <Compile Include="MVC\View\Pages\NewReportPg.xaml.cs">
       <DependentUpon>NewReportPg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVC\View\Pages\NewsPage.xaml.cs">
+      <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVC\View\Pages\SettingsPg.xaml.cs">
       <DependentUpon>SettingsPg.xaml</DependentUpon>
@@ -228,6 +246,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MVC\View\Pages\ImgTut05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\CategoryArt.jpg" />
+    <Resource Include="Img\CategoryBusiness.png" />
+    <Resource Include="Img\CategoryLifestyle.jpg" />
+    <Resource Include="Img\CommunityCategory.jpg" />
+    <Resource Include="Img\EntertainmentCategory.jpg" />
+    <Resource Include="Img\ImgSportsCate.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

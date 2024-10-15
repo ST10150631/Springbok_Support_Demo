@@ -97,7 +97,8 @@ namespace PROG7312_POE.MVVM.View.Styles
 
         private void RbtnEvents_Checked(object sender, RoutedEventArgs e)
         {
-
+            NewsPage events = new NewsPage();
+            ContentPane.Navigate(events);
         }
 
         private void RbtnStatus_Checked(object sender, RoutedEventArgs e)
