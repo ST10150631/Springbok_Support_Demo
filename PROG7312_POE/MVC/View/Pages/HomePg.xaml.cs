@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PROG7312_POE.MVVM.View.Styles;
 using PROG7312_POE.MVC.View.Pages;
+using PROG7312_POE.MVC.Controller;
 
 namespace PROG7312_POE.MVVM.View.Pages
 {
@@ -27,6 +28,11 @@ namespace PROG7312_POE.MVVM.View.Pages
         public HomePg()
         {
             InitializeComponent();
+            ItemsCntrlEvents.DataContext = MainController.newsController;
+            ItemsCntrlEvents.ItemsSource = MainController.newsController.GetEvents();
+            ReportItemsControl.Items.Clear();
+            ReportItemsControl.DataContext = MainController.reportController;
+            ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
         }
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)
