@@ -43,12 +43,20 @@ namespace PROG7312_POE.MVVM.View.Pages
             parentWindow.ContentPane.Content = newReportPg;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnAnnouncements_Click_1(object sender, RoutedEventArgs e)
         {
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
             NewsPage newsPg = new NewsPage();
             parentWindow.RbtnReport.IsChecked = true;
             parentWindow.ContentPane.Content = newsPg;
+        }
+
+        private void BtnServiceStat_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            ViewReportPg viewReportPg = new ViewReportPg();
+            parentWindow.RbtnStatus.IsChecked = true;
+            parentWindow.ContentPane.Content = viewReportPg;
         }
     }
 }

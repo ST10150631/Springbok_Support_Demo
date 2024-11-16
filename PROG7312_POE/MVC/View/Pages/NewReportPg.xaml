@@ -68,7 +68,23 @@
                             <ComboBoxItem Content="Sanitation"/>
                             <ComboBoxItem Content="Roads"/>
                             <ComboBoxItem Content="Utilities"/>
-                            <!-- Add more categories as needed -->
+                            <ComboBoxItem Content="Health"/>
+                                <ComboBoxItem Content="Birth and Parenting"/>
+                                <ComboBoxItem Content="Education"/>
+                                <ComboBoxItem Content="Agriculture and Land"/>
+                                <ComboBoxItem Content="Sports, Arts and Culture"/>
+                                <ComboBoxItem Content="Business and Economic Activity"/>
+                                <ComboBoxItem Content="Consumer Protection"/>
+                                <ComboBoxItem Content="Citizenship and Immigration"/>
+                                <ComboBoxItem Content="Employment and Labour"/>
+                                <ComboBoxItem Content="Environment"/>
+                                <ComboBoxItem Content="Money and Tax"/>
+                                <ComboBoxItem Content="Legal and Defence"/>
+                                <ComboBoxItem Content="Housing and Local Services"/>
+                                <ComboBoxItem Content="Transport"/>
+                                <ComboBoxItem Content="Social Services"/>
+                                <ComboBoxItem Content="Retirement and Death"/>
+                                <!-- Add more categories as needed -->
                         </ComboBox>
                     </StackPanel>
 

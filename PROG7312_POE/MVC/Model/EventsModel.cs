@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace PROG7312_POE.MVC.Model
 {
@@ -21,12 +22,14 @@ namespace PROG7312_POE.MVC.Model
     //public string eventVenue { get; set; }
     // public string status { get; set; }
     public Dictionary<string, MediaModel> eventMedia;
-        public MediaModel eventLogo { get; set; }
-        
-    /// <summary>
-    //public string eventOrganizer { get; set; }
-    /// </summary>
-    public EventsModel()
+    public MediaModel eventLogo { get; set; }
+    private Stack<BitmapImage> previousMedia = new Stack<BitmapImage>();
+    private Stack<BitmapImage> nextMedia = new Stack<BitmapImage>();
+
+        /// <summary>
+        //public string eventOrganizer { get; set; }
+        /// </summary>
+        public EventsModel()
         {
             EventDetails = new SortedDictionary<string, string>();
         }

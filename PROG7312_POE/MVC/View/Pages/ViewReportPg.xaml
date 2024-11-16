@@ -42,6 +42,8 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
 
                                 </Grid.RowDefinitions>
                                 <!-- ID -->
@@ -83,24 +85,58 @@
                                     <ProgressBar Value="1" Maximum="100" Margin="1,0" Foreground="ForestGreen" Background="{DynamicResource PrimaryBrush}"/>
                                 </Border>
 
-                                <!-- Media -->
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="7">
-                                    <Button x:Name="BtnViewMedia"  Content="Display Media" Style="{DynamicResource btnPrimary}" Click="BtnViewMedia_Click" />
-                                  
-                                    <TextBlock x:Name="TxtMedia" Style="{DynamicResource TxtSecondary}" />
+                               
+                                <!-- Pdfs -->
+                                <ItemsControl x:Name="pdfIC"  Grid.Row="7" ItemsSource="{Binding ReportPdfsData}" Margin="10">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <!-- Bind to Name of the MediaNode (PDF) -->
+                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5" />
+                                                <Button Content="Open PDF" Tag="{Binding}"  Style="{DynamicResource btnSmall}" Click="BtnOpenPdf_Click" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
 
-                                </StackPanel>
+
+                                <!-- Videos -->
+                                <ItemsControl x:Name="VideoIC"  Grid.Row="8" ItemsSource="{Binding ReportVideosData}" Margin="10">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <!-- Bind to Name of the Video -->
+                                                <MediaElement Source="{Binding VideoUri}" Width="300" IsMuted="False" LoadedBehavior="Manual" UnloadedBehavior="Manual" />
+                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5" />
+                                                <Button x:Name="Play"  Style="{DynamicResource btnMusic}" Width="30"  Height="30" Click="BtnVideoPlay_Click" >
+                                                    <fa:IconImage HorizontalAlignment="Center" VerticalAlignment="Center"  Icon="Play" Width="30" Foreground="White" Margin="10"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <!-- Image -->
+                                <ItemsControl x:Name="ImageIC"  Grid.Row="9" ItemsSource="{Binding ReportImagesData}" Margin="10">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <!-- Bind to Name of the Video -->
+                                                <Image Source="{Binding Image}" Width="300" />
+                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
 
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <StackPanel Orientation="Vertical" Grid.Row="2">
-                <TextBlock Text="Image Display: " Style="{DynamicResource TxtSecondary}"/>
-                <Image x:Name="ImgMedia" Height="200" Width="200" Margin="10" Visibility="Collapsed"/>
-            </StackPanel>
-                
+
+
+
         </Grid>
 
     </ScrollViewer>

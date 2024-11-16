@@ -18,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.ColumnSpan="1" Background="#234041">
             <TextBlock Text="Events" Style="{DynamicResource TitlePrimary}" Margin="10"/>
@@ -107,7 +108,12 @@
         </StackPanel>
 
         <Button x:Name="BtnReport" Style="{StaticResource MenuReportBtnStyle}" Click="BtnReport_Click"  Grid.Row="1" />
-        <Button Style="{StaticResource MenuNewsBtnStyle}"   Grid.Column="1" Click="Button_Click" Grid.Row="1"   />
-        <Button Style="{StaticResource MenuStatusBtnStyle}" Grid.Column="2" Grid.Row="1"  />
+        <Button Style="{StaticResource MenuNewsBtnStyle}" x:Name="BtnAnnouncements"   Grid.Column="1"  Grid.Row="1" Click="BtnAnnouncements_Click_1"   />
+        <Button Style="{StaticResource MenuStatusBtnStyle}" x:Name="BtnServiceStat"  Grid.Column="2" Grid.Row="1" Click="BtnServiceStat_Click"  />
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Vertical">
+            <TextBlock Text="Resources" Style="{DynamicResource TitlePrimary}" Margin="10"/>
+            <TextBlock Text="Resource 1" Style="{DynamicResource TxtPrimary}" Margin="10"/>
+
+        </StackPanel>
     </Grid>
 </Page>

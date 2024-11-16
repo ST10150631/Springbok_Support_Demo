@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -12,12 +13,14 @@ using PROG7312_POE.MVVM.View.Styles;
 
 namespace PROG7312_POE.MVC.View.Pages
 {
-    /// <summary>
-    /// Interaction logic for ViewReportPg.xaml
-    /// </summary>
     public partial class ViewReportPg : Page
     {
-        private readonly string[] ImgExtensions = { ".jpg", ".jpeg", ".gif", ".bmp", ".png" };
+        private MediaNode currentNode;
+        private ReportModel currentReport;
+        private MediaNode currentParentNode;
+        private int currentChildIndex = 0;
+        private Stack<BitmapImage> previousMedia = new Stack<BitmapImage>();
+        private Stack<BitmapImage> nextMedia = new Stack<BitmapImage>();
 
         public ViewReportPg()
         {
@@ -25,37 +28,7 @@ namespace PROG7312_POE.MVC.View.Pages
             ReportItemsControl.Items.Clear();
             ReportItemsControl.DataContext = MainController.reportController;
             ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
-        }
 
-        private void BtnViewMedia_Click(object sender, RoutedEventArgs e)
-        {
-            // Get the Button that was clicked
-            var button = sender as Button;
-            if (button == null) return;
-
-            // Get the DataContext of the Button
-            var report = button.DataContext as ReportModel;
-            if (report == null) return;
-            try
-            {
-                if (IsValidImageExtension(report.MediaType))
-                {
-                    this.ImgMedia.Source = report.image;
-                    ImgMedia.Visibility = Visibility.Visible;
-                }
-                else if (report.MediaType == ".pdf" && report.ReportMedia != null)
-                {
-                    LoadPDF(report.ReportMedia);
-                }
-                else
-                {
-                    MessageBox.Show("Media type not supported or there is no media for this report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }catch
-            {
-
-            }
-            
         }
 
         private void LoadPDF(byte[] byteStream)
@@ -75,24 +48,123 @@ namespace PROG7312_POE.MVC.View.Pages
             }
         }
 
-        private bool IsValidImageExtension(string mediaType)
+        private void displayReports()
         {
-            if (string.IsNullOrWhiteSpace(mediaType))
-                return false;
+            foreach (var report in MainController.reportController.ReportData)
+            {
+                ReportItemsControl.Items.Add(report);
+            }
+        }
 
-            // Convert to lowercase to ensure case-insensitive comparison
-            mediaType = mediaType.ToLower();
 
-            // Check if the provided extension is in the list of valid extensions
-            return ImgExtensions.Contains(mediaType);
+        
+        private void BtnBackMedia_Click(object sender, RoutedEventArgs e)
+        {
+            if (previousMedia.Count > 0)
+            {
+                var currentMedia = previousMedia.Pop();
+                nextMedia.Push(currentReport.currentImage);
+                MainController.reportController.updateImage(currentReport, currentMedia);
+                ReportItemsControl.DataContext = MainController.reportController;
+                ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
+            }
+            else
+            {
+                MessageBox.Show("No previous media.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void BtnOpenPdf_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var pdfNode = button?.Tag as MediaNode;
+            if (pdfNode != null)
+            {
+                try
+                {
+                    string tempFilePath = Path.Combine(Path.GetTempPath(), pdfNode.Name);
+                    File.WriteAllBytes(tempFilePath, pdfNode.MediaData);
+                    Process.Start(new ProcessStartInfo(tempFilePath) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to open PDF: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void BtnPlayVideo_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var videoNode = button?.Tag as MediaNode;
+            if (videoNode != null)
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo(videoNode.MediaData.ToString()) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to play video: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+
+
+
+        private void BtnNextMedia_Click(object sender, RoutedEventArgs e)
+        {
+            if (nextMedia.Count > 0)
+            {
+                var currentMedia = nextMedia.Pop();
+                previousMedia.Push(currentReport.currentImage);
+                MainController.reportController.updateImage(currentReport, currentMedia);
+                ReportItemsControl.DataContext = MainController.reportController;
+                ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
+            }
+            else
+            {
+                MessageBox.Show("No next media.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-            HomePg homePg = new HomePg();
+            var parentWindow = Window.GetWindow(this) as MainWindow;
+            var homePg = new HomePg();
             parentWindow.RbtnHome.IsChecked = true;
             parentWindow.ContentPane.Content = homePg;
         }
+
+        private void BtnVideoPlay_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                // Find the StackPanel (parent) of the button clicked
+                var stackPanel = button.Parent as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Find the MediaElement inside the StackPanel
+                    MediaElement mediaElement = stackPanel.Children.OfType<MediaElement>().FirstOrDefault();
+                   
+                    if (mediaElement != null)
+                    {
+                        // Toggle play/pause based on the MediaElement's current state
+                        if (mediaElement.LoadedBehavior == MediaState.Play)
+                        {
+                            mediaElement.Pause();
+                            
+                        }
+                        else
+                        {
+                            
+                            mediaElement.Play();
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -224,13 +224,13 @@
                             Height="{TemplateBinding Height}"/>
 
                         <!-- Filter Overlay -->
+                        <!-- Filter Overlay -->
                         <Border x:Name="FilterOverlay"
-                             Background="Gray"
-                             Opacity="0.8"
-                             Width="{TemplateBinding Width}" 
-                             Height="{TemplateBinding Height}"
-                             Visibility="Visible"/>
-                        <fa:IconImage Icon="Lock" Foreground="{DynamicResource MenuBrush}" Margin="10"/>
+                         Background="{DynamicResource MenuBrush}"
+                         Opacity="0.8"
+                         Width="{TemplateBinding Width}" 
+                         Height="{TemplateBinding Height}"
+                         Visibility="Visible"/>
                         <TextBlock x:Name="MenuText"
                                Text="Service Status"
                                    TextWrapping="Wrap"
@@ -250,7 +250,6 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Grid>
-                                <!-- GIF Image -->
                                 <Image x:Name="MenuImage"
                     Source="/Img/ServiceReqImg.jpg" 
                     Stretch="Fill" 
@@ -258,20 +257,19 @@
                     Height="{TemplateBinding Height}"/>
 
                                 <!-- Filter Overlay -->
-                                <Border x:Name="FilterOverlay"
-                     Background="Black"
-                     Opacity="0.8"
-                     Width="{TemplateBinding Width}" 
-                     Height="{TemplateBinding Height}"
-                     Visibility="Visible"/>
-                                <fa:IconImage Icon="Lock" Foreground="{DynamicResource MenuBrush}" Margin="10"/>
-                                <TextBlock x:Name="MenuText"
-                                   Text="Service Status"
-                                   TextWrapping="Wrap"
-                                   Style="{DynamicResource TitleTertiary}"
-                                           Foreground="{DynamicResource MenuBrush}"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                 <Border x:Name="FilterOverlay"
+                                 Background="{DynamicResource MenuBrush}"
+                                 Opacity="0.8"
+                                 Width="{TemplateBinding Width}" 
+                                 Height="{TemplateBinding Height}"
+                                 Visibility="Visible"/>
+                                 <TextBlock x:Name="MenuText"
+                                    Text="Service Status"
+                                    TextWrapping="Wrap"
+                                    Style="{DynamicResource TitleTertiary}"
+                                    Foreground="{DynamicResource TertiaryBrush}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -393,17 +391,50 @@
 
         </Style>
         <!-- Primary Button Text-->
-        <Style x:Key="PrimaryButtonText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value= "{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
-            <Setter Property="FontFamily" Value="Montserrat"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="FontSize" Value="13.5"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
+    <Style x:Key="PrimaryButtonText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value= "{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="13.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- PILL BUTTON Small: -->
+    <Style x:Key="btnSmall" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource MenuBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                            CornerRadius="10"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Trigger -->
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+
+                <Setter Property="Margin" Value="0,0,10,10"/>
+                <Setter Property="Background" Value="{DynamicResource TertiaryBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
 
 
-        <!-- Star/Stop RadioButton -->
+    <!-- Star/Stop RadioButton -->
 
         <Style x:Key="RbtnStartStop" TargetType="RadioButton">
             <Setter Property="Background" Value="{DynamicResource SecondaryBrush}"/>

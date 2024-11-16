@@ -4,21 +4,16 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
 using PROG7312_POE.MVC.Model;
 
 namespace PROG7312_POE.MVC.Controller
 {
     public class ReportController : INotifyPropertyChanged
     {
-        private HashSet <string> EventCategries = new HashSet <string>();
         /// <summary>
         /// Holds the reports in memmory
         /// </summary>
@@ -29,10 +24,14 @@ namespace PROG7312_POE.MVC.Controller
         private List <ReportModel> ReportList = new List<ReportModel>();
 
         public readonly string[] ImgExtensions = { ".jpg", ".jpeg", ".gif", ".bmp", ".png" };
-        /// <summary>
-        /// Holds reports as an observable collection to bu used for binding
-        /// </summary>
-        public ObservableCollection<ReportModel> ReportData
+
+        
+
+
+/// <summary>
+/// Holds reports as an observable collection to bu used for binding
+/// </summary>
+public ObservableCollection<ReportModel> ReportData
         {
             get { return _reportData; }
             set
@@ -52,6 +51,8 @@ namespace PROG7312_POE.MVC.Controller
             _reportData = new ObservableCollection<ReportModel>();
         }
         //======================================================= End of Method ===================================================
+
+
 
 
         /// <summary>
@@ -80,12 +81,20 @@ namespace PROG7312_POE.MVC.Controller
             report.ID = ReportData.Count + 1;
             report.ReportDate = DateTime.Now;
             report.ReportStatus = "Filed";
+            report.FindImageFiles();
+            report.FindPdfFiles();
+            report.FindMp4Files();
             ReportData.Add(report);
             ReportList.Add(report);
             OnPropertyChanged(nameof(ReportData));
         }
         //======================================================= End of Method ===================================================
 
+        public void updateImage(ReportModel report ,BitmapImage nextImage)
+        {
+            report.currentImage = nextImage;
+            OnPropertyChanged(nameof(ReportData));
+        }
 
         public ReportModel SearchByID(int ID)
         {
@@ -93,49 +102,6 @@ namespace PROG7312_POE.MVC.Controller
             return foundReport;
 
         }
-
-        /// <summary>
-        /// Opens file dialog to select media to upload then returns the media content, path and type
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        /// ----------------------------------------------------- Start of Method ------------------------------------------------
-        public (byte[] MediaData, string MediaType, string FilePath) UploadMedia()
-        {
-            
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                Filter = "PDF Files (*.pdf)|*.pdf|Image Files (*.jpg;*.jpeg;*.gif;*.bmp;*.png)|" +
-                "*.jpg;*.jpeg;*.gif;*.bmp;*.png",
-                FilterIndex = 1
-            };
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string filePath = openFileDialog.FileName;
-                    string fileType = Path.GetExtension(filePath).ToLower();
-                   
-                    // Read the file data into a byte array
-                    byte[] fileData = File.ReadAllBytes(filePath);
-
-                    // Return the byte array and file type
-                    return (fileData, fileType, filePath);
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.MessageBox.Show("Error Loading image.", "Error", MessageBoxButton.OK);
-                    // Handle exceptions (e.g., file not found, access denied)
-                    throw new Exception($"Error reading file: {ex.Message}", ex);
-                    
-                }
-            }
-            else
-            {
-                return (null, null, null);
-            }
-        }
-        //======================================================= End of Method ===================================================
 
         /// <summary>
         /// Checks if the provided media type is a valid image extension

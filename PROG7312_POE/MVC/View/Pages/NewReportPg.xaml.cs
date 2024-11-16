@@ -3,23 +3,14 @@ using PROG7312_POE.MVC.Model;
 using PROG7312_POE.MVC.View.Pages;
 using PROG7312_POE.MVVM.View.Styles;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace PROG7312_POE.MVVM.View.Pages
 {
@@ -36,10 +27,6 @@ namespace PROG7312_POE.MVVM.View.Pages
         /// The current step in the report creation process
         /// </summary>
         private int currentStep = 1;
-
-        Byte[] MediaData;
-        string MediaType;
-        string FilePath;
 
         ReportModel model;
 
@@ -66,22 +53,63 @@ namespace PROG7312_POE.MVVM.View.Pages
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnAttachMedia_Click(object sender, RoutedEventArgs e)
         {
-          (MediaData,MediaType,FilePath) =  MainController.reportController.UploadMedia();
-            this.MediaNameTxt.Text = FilePath;
-            model.ReportMedia = MediaData;
-            model.MediaType = MediaType;
-            if (MediaType != ".pdf" && MediaType != null)
+            OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-                BitmapImage bitmapImage = new BitmapImage();
-                using (MemoryStream memoryStream = new MemoryStream(MediaData))
-                {
-                    bitmapImage.BeginInit();
-                    bitmapImage.StreamSource = memoryStream;
-                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmapImage.EndInit();
-                }
-                model.image = bitmapImage;
+                Filter = "Media Files (*.pdf;*.jpg;*.jpeg;*.gif;*.bmp;*.png;*.mp4;*.avi)|*.pdf;*.jpg;*.jpeg;*.gif;*.bmp;*.png;*.mp4;*.avi",
+                FilterIndex = 1,
+                Multiselect = true // Allow selecting multiple files
+            };
 
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string filePath in openFileDialog.FileNames)
+                {
+                    try
+                    {
+                        string fileType = Path.GetExtension(filePath).ToLower();
+                        byte[] fileData = File.ReadAllBytes(filePath);
+
+                        // Create a MediaNode for this file
+                        var mediaNode = new MediaNode
+                        {
+                            Name = Path.GetFileName(filePath), // File name as the node name
+                            MediaData = fileData,
+                            MediaType = fileType,
+                            FilePath = filePath
+                        };
+
+                        if (fileType == ".pdf")
+                        {
+                            model.AddPdf(mediaNode);
+                        }
+                        else if (fileType == ".mp4")
+                        {
+                            string videoPath =System.IO.Path.GetTempFileName()+".mp4";
+                            File.WriteAllBytes(videoPath, fileData);
+                            mediaNode.VideoUri = new Uri(videoPath, UriKind.RelativeOrAbsolute);
+                            model.AddVideo(mediaNode);
+                        }
+                        else 
+                        {
+                            BitmapImage bitmapImage = new BitmapImage();
+                            using (MemoryStream memoryStream = new MemoryStream(fileData))
+                            {
+                                bitmapImage.BeginInit();
+                                bitmapImage.StreamSource = memoryStream;
+                                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                                bitmapImage.EndInit();
+                            }
+                            mediaNode.Image = bitmapImage;
+
+                            model.AddImage(mediaNode);
+                        }
+                        MediaNameTxt.Text += Path.GetFileName(filePath) + ", ";
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Windows.MessageBox.Show($"Error loading file: {filePath}", "Error", MessageBoxButton.OK);
+                    }
+                }
             }
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------

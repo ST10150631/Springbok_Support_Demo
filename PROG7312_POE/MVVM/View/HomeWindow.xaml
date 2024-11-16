@@ -1,13 +1,13 @@
-﻿<Window x:Class="PROG7312_POE.MVVM.View.Styles.MainWindow"
+﻿<Window x:Class="PROG7312_POE.MVVM.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa ="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
-        xmlns:local="clr-namespace:PROG7312_POE.MVVM.View.Styles"
+        xmlns:local="clr-namespace:PROG7312_POE.MVVM.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000"
-                WindowStartupLocation="CenterScreen"  
+        Title="MianWindow" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen"  
         WindowStyle="None" 
         ResizeMode="CanResize"
         AllowsTransparency="True" 
@@ -20,7 +20,7 @@
 
     <!-- Creates a Blue background with rounded corners-->
     <Border x:Name="BrderMain"
-            Background="{DynamicResource PrimaryBrush}" 
+            Background="#212121" 
             CornerRadius="20"
             BorderThickness="5">
 
@@ -50,11 +50,11 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
-               Style="{DynamicResource TitlePrimary}" 
+               Style="{DynamicResource TxtSecondary}" 
                Margin="10,0,0,0" 
                FontWeight="Light" 
                VerticalAlignment="Center"><Run Language="en-za" Text="Springbok Support"/></TextBlock>
-                    <Image Source="/Img/Spring Support (1).png" Margin="270,0,0,0"  HorizontalAlignment="Left"/>
+                    <Image Source="/Img/Spring Support (1).png" Margin="194,0,0,0"  HorizontalAlignment="Left"/>
 
 
                     <!-- User Display-->
@@ -102,7 +102,7 @@
                 </Grid>
             </Border>
             <!-- Allows For Opcity on background Image-->
-            <Grid x:Name="Grd" Grid.Row="1" Style="{DynamicResource  BackgroundHome}" Opacity="0.2"/>
+            <Grid x:Name="Grd" Grid.Row="1" Style="{DynamicResource  BackgroundHome}" Opacity="0.1"/>
 
 
             <!--  This Grid holds the pages -->
@@ -133,7 +133,7 @@
                         <StackPanel Orientation="Horizontal" Margin="15,15,0,20" >
 
                             <!-- App Title-->
-                            <TextBlock Text="Main Menu" Style="{DynamicResource TitleForeground}" />
+                            <TextBlock Text="Main Menu" Style="{DynamicResource TitlePrimary}" />
 
 
                         </StackPanel>
@@ -143,7 +143,7 @@
                         <!-- Menu Buttons-->
 
                         <!-- Home  radio Btn -->
-                        <RadioButton x:Name="RbtnHome" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnHome_Checked"  >
+                        <RadioButton x:Name="RbtnHome" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnHome_Checked" >
 
                             <StackPanel Orientation="Horizontal" >
                                 <fa:IconImage Icon="House" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
@@ -153,52 +153,64 @@
                             </StackPanel>
                         </RadioButton>
 
-                        <!-- Report  radio Btn -->
-                        <RadioButton x:Name="RbtnReport" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnReport_Checked"  >
+                        <!-- Semester  radio Btn -->
+                        <RadioButton x:Name="RbtnSemester" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnSemester_Checked" >
 
                             <StackPanel Orientation="Horizontal" >
-                                <fa:IconImage Icon="Bullhorn" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
+                                <fa:IconImage Icon="Calendar" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
 
-                                <TextBlock Text="Report Issues" Style="{DynamicResource menuButtonText}"  TextWrapping="Wrap"/>
+                                <TextBlock Text="Add Semester " Style="{DynamicResource menuButtonText}" />
 
                             </StackPanel>
                         </RadioButton>
 
 
-                        <!-- Events and announcements  radio Btn -->
-                        <RadioButton x:Name="RbtnEvents" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnEvents_Checked">
+                        <!-- Modules  radio Btn -->
+                        <RadioButton x:Name="RbtnModules" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnModules_Checked" >
 
                             <StackPanel Orientation="Horizontal" >
-                                <fa:IconImage Icon="Newspaper" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
+                                <fa:IconImage Icon="TableList" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
 
-                                <TextBlock Text="Local Events and Announcments" Style="{DynamicResource menuButtonText}"   TextWrapping="Wrap"/>
+                                <TextBlock Text="Add Module " Style="{DynamicResource menuButtonText}" />
 
                             </StackPanel>
                         </RadioButton>
 
-                        <!-- ServiceRequest Status  radio Btn -->
-                        <RadioButton x:Name="RbtnStatus" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnStatus_Checked" >
+                        <!-- Study  radio Btn -->
+                        <RadioButton x:Name="RbtnStudy" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnStudy_Checked" >
 
                             <StackPanel Orientation="Horizontal" >
                                 <fa:IconImage Icon="Clock" Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
 
-                                <TextBlock Text="Service Request Status " Style="{DynamicResource menuButtonText}"   TextWrapping="Wrap"/>
+                                <TextBlock Text="Study " Style="{DynamicResource menuButtonText}" />
 
                             </StackPanel>
                         </RadioButton>
 
+
+                        <!--Music   radio Btn-->
+                        <RadioButton x:Name="RbtnMusic" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" Checked="RbtnMusic_Checked" >
+
+                            <StackPanel Orientation="Horizontal" >
+                                <fa:IconImage Icon="ItunesNote"  Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
+                                <TextBlock Text="Music " Style="{DynamicResource menuButtonText}" />
+
+                            </StackPanel>
+                        </RadioButton>
+
+
                         <!-- Settings   radio Btn -->
-                        <RadioButton x:Name="RbtnSettings" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" VerticalAlignment="Bottom" Checked="RbtnSettings_Checked"  >
+                        <RadioButton x:Name="RbtnSettings" Style="{DynamicResource menuButton}" Height="57"  Margin="20,0,0,0" VerticalAlignment="Bottom" Checked="RbtnSettings_Checked" >
 
                             <StackPanel Orientation="Horizontal" >
                                 <fa:IconImage Icon="Gear"  Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
-                                <TextBlock Text="Settings " Style="{DynamicResource menuButtonText}"  TextWrapping="Wrap" />
+                                <TextBlock Text="Settings " Style="{DynamicResource menuButtonText}" />
 
                             </StackPanel>
                         </RadioButton>
 
                         <!-- Exit Button-->
-                        <Button x:Name="BtnLogout" Style="{DynamicResource btnPrimary}" Height="57"  Margin="20,20,0,0" VerticalAlignment="Bottom" >
+                        <Button x:Name="BtnLogout" Style="{DynamicResource btnPrimary}" Height="57"  Margin="20,0,0,0" VerticalAlignment="Bottom" Click="BtnLogout_Click"  >
 
                             <StackPanel Orientation="Horizontal" >
                                 <fa:IconImage Icon="DoorOpen"  Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
