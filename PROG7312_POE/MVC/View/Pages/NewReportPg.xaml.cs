@@ -190,6 +190,7 @@ namespace PROG7312_POE.MVVM.View.Pages
             }
             else if (currentStep == 4)
             {
+                model.ReportStatus = "Submitted";
                 MainController.reportController.AddReport(model);
                 this.SiyaCntrl.SiyaTxt.Text = "  Thank you for submitting your report. \n  You will be redirected to the home page shortly.";
                 this.ProgressBar.Value = 100;

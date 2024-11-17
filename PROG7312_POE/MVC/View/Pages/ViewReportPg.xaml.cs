@@ -15,12 +15,6 @@ namespace PROG7312_POE.MVC.View.Pages
 {
     public partial class ViewReportPg : Page
     {
-        private MediaNode currentNode;
-        private ReportModel currentReport;
-        private MediaNode currentParentNode;
-        private int currentChildIndex = 0;
-        private Stack<BitmapImage> previousMedia = new Stack<BitmapImage>();
-        private Stack<BitmapImage> nextMedia = new Stack<BitmapImage>();
 
         public ViewReportPg()
         {
@@ -56,23 +50,6 @@ namespace PROG7312_POE.MVC.View.Pages
             }
         }
 
-
-        
-        private void BtnBackMedia_Click(object sender, RoutedEventArgs e)
-        {
-            if (previousMedia.Count > 0)
-            {
-                var currentMedia = previousMedia.Pop();
-                nextMedia.Push(currentReport.currentImage);
-                MainController.reportController.updateImage(currentReport, currentMedia);
-                ReportItemsControl.DataContext = MainController.reportController;
-                ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
-            }
-            else
-            {
-                MessageBox.Show("No previous media.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
         private void BtnOpenPdf_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -106,25 +83,6 @@ namespace PROG7312_POE.MVC.View.Pages
                 {
                     MessageBox.Show($"Failed to play video: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }
-        }
-
-
-
-
-        private void BtnNextMedia_Click(object sender, RoutedEventArgs e)
-        {
-            if (nextMedia.Count > 0)
-            {
-                var currentMedia = nextMedia.Pop();
-                previousMedia.Push(currentReport.currentImage);
-                MainController.reportController.updateImage(currentReport, currentMedia);
-                ReportItemsControl.DataContext = MainController.reportController;
-                ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
-            }
-            else
-            {
-                MessageBox.Show("No next media.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -13,8 +13,32 @@ namespace PROG7312_POE.MVC.Controller
     {
         public ChartValues<double> LineChartValues { get; set; }
         public ChartValues<double> BarChartValues { get; set; }
+        public ObservableCollection<string> BarChartLabels { get; set; }
         public SeriesCollection PieChartValues { get; set; }
         public ObservableCollection<DataRow> TableData { get; set; }
+        public string[] categoryNames = new string[]
+        {
+    "Sanitation",
+    "Roads",
+    "Utilities",
+    "Health",
+    "Birth and Parenting",
+    "Education",
+    "Agriculture and Land",
+    "Sports, Arts and Culture",
+    "Business and Economic Activity",
+    "Consumer Protection",
+    "Citizenship and Immigration",
+    "Employment and Labour",
+    "Environment",
+    "Money and Tax",
+    "Legal and Defence",
+    "Housing and Local Services",
+    "Transport",
+    "Social Services",
+    "Retirement and Death"
+};
+
 
         public ChartController()
         {
@@ -22,7 +46,7 @@ namespace PROG7312_POE.MVC.Controller
             LineChartValues = new ChartValues<double> { 10, 20, 30, 40 };
 
             // Bar Chart Data
-            BarChartValues = new ChartValues<double> { 15, 25, 35, 45 };
+            InitBarGraph();
 
             // Table Data
             TableData = new ObservableCollection<DataRow>
@@ -38,6 +62,23 @@ namespace PROG7312_POE.MVC.Controller
                 new PieSeries { Title = "In Progress", Values = new ChartValues<double> { 30 }, DataLabels = true },
                 new PieSeries { Title = "Complete", Values = new ChartValues<double> { 20 }, DataLabels = true }
             };
+
+        }
+        private void InitBarGraph()
+        {
+            BarChartValues = new ChartValues<double>();
+            BarChartLabels = new ObservableCollection<string>();
+            foreach (var category in categoryNames)
+            {
+                double chartValue = 0.0;
+                chartValue = MainController.reportController.getCategoryReportCount(category);
+                if (chartValue > 0)
+                {
+                    BarChartValues.Add(chartValue);
+                    BarChartLabels.Add(category);
+                }
+                
+            }
 
         }
     }
