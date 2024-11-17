@@ -33,6 +33,11 @@ namespace PROG7312_POE.MVC.Controller
         private List<ReportModel> ReportList = new List<ReportModel>();
 
         /// <summary>
+        /// Instance of the report location graph
+        /// </summary>
+        ReportLocationGraph locationGraph = new ReportLocationGraph();
+
+        /// <summary>
         /// Holds a list of image extensions
         /// </summary>
         public readonly string[] ImgExtensions = { ".jpg", ".jpeg", ".gif", ".bmp", ".png" };
@@ -99,11 +104,21 @@ namespace PROG7312_POE.MVC.Controller
             report.FindMp4Files();
             ReportData.Add(report);
             ReportList.Add(report);
+            locationGraph.AddReport(report);
             reportMinHeap.Insert(report);
             categoryGeneralTree.AddReportToCategory(report.ReportType, report);
             OnPropertyChanged(nameof(ReportData));
         }
         //======================================================= End of Method ===================================================
+        /// <summary>
+        /// Gets all provinces and Report counts from the location graph
+        /// </summary>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        public Dictionary<string, int> getLocationReports()
+        {
+           return locationGraph.GetReportCountsByProvince();
+        }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
         /// <summary>
         /// Gets all reports from the tree as an observable collection

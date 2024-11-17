@@ -75,7 +75,7 @@
         </Border>
 
         <!-- Pie Chart -->
-        <lvc:PieChart Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
+        <lvc:PieChart Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" InnerRadius="40"
                       Series="{Binding PieChartValues}" LegendLocation="Right" />
 
 

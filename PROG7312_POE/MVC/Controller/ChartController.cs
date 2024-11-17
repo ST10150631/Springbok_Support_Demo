@@ -13,15 +13,45 @@ namespace PROG7312_POE.MVC.Controller
 {
     internal class ChartController
     {
+        /// <summary>
+        /// Holds Line Chart Values
+        /// </summary>
         public ChartValues<double> LineChartValues { get; set; }
+        /// <summary>
+        /// Holds Bar Chart Values
+        /// </summary>
         public ChartValues<double> BarChartValues { get; set; }
+        /// <summary>
+        /// Holds Bar Chart Labels
+        /// </summary>
         public ObservableCollection<string> BarChartLabels { get; set; }
+        /// <summary>
+        /// Holds Pie Chart Values
+        /// </summary>
         public SeriesCollection PieChartValues { get; set; }
+        /// <summary>
+        /// Holds Line Chart Axis X labels
+        /// </summary>
         public ObservableCollection<string> LineChartAxisX { get; set; }
+        /// <summary>
+        /// Holds Table Data
+        /// </summary>
         public ObservableCollection<DataRow> TableData { get; set; }
+        /// <summary>
+        /// Holds Total Reports number
+        /// </summary>
         public int TotalReports { get; set; }
+        /// <summary>
+        /// Holds Total Resolved Reports number
+        /// </summary>
         public int TotalResolvedReports { get; set; }
+        /// <summary>
+        /// Holds In Progress Reports number
+        /// </summary>
         public int InProgress { get; set; }
+        /// <summary>
+        /// Holds a list of category names as an array
+        /// </summary>
         public string[] categoryNames = new string[]
         {
     "Sanitation",
@@ -45,7 +75,10 @@ namespace PROG7312_POE.MVC.Controller
     "Retirement and Death"
 };
 
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public ChartController()
         {
             var reports = MainController.reportController.getAllReportsFromTree();
@@ -53,7 +86,7 @@ namespace PROG7312_POE.MVC.Controller
             TotalResolvedReports = reports.Count(r => r.ReportStatus == "Completed");
             InProgress = reports.Count(r => r.ReportStatus == "In Progress");
             // Pie Chart Data
-            InitPieChart(reports);
+            InitPieChart();
             // Line Chart Data
             InitLineChart(reports);
 
@@ -65,24 +98,27 @@ namespace PROG7312_POE.MVC.Controller
 
 
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
-        private void InitPieChart(ObservableCollection<ReportModel> reports)
+        /// <summary>
+        /// Initialize Pie Chart with data
+        /// </summary>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        private void InitPieChart()
         {
+            var provineReports = MainController.reportController.getLocationReports();
             PieChartValues = new SeriesCollection();
-            foreach (var category in categoryNames)
+            foreach (var province in provineReports)
             {
-                double chartValue = 0.0;
-                chartValue = MainController.reportController.getCategoryReportCount(category);
-                if (chartValue > 0)
+                PieChartValues.Add(new PieSeries
                 {
-                    PieChartValues.Add(new PieSeries
-                    {
-                        Title = category,
-                        Values = new ChartValues<double> { chartValue }
-                    });
-                }
+                    Title = province.Key,
+                    Values = new ChartValues<double> { province.Value }
+                });
             }
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
+
         /// <summary>
         /// Initialize Table with data
         /// </summary>
@@ -119,6 +155,11 @@ namespace PROG7312_POE.MVC.Controller
 
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Initializes the line chart with data
+        /// </summary>
+        /// <param name="reports"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void InitLineChart(ObservableCollection<ReportModel> reports)
         {
             LineChartValues = new ChartValues<double>();
@@ -142,14 +183,19 @@ namespace PROG7312_POE.MVC.Controller
         }
 
     }
+    //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+    /// <summary>
+    /// Data Row for Table
+    /// </summary>
+    /// 
     public class DataRow
     {
         public string ID { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
         public string Location { get; set; }
-        public string Status { get; set; } // Add Status Property
+        public string Status { get; set; }
     }
 }
 
