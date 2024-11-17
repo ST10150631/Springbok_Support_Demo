@@ -32,6 +32,9 @@ namespace PROG7312_POE.MVC.Controller
         /// </summary>
         private List<ReportModel> ReportList = new List<ReportModel>();
 
+        /// <summary>
+        /// Holds a list of image extensions
+        /// </summary>
         public readonly string[] ImgExtensions = { ".jpg", ".jpeg", ".gif", ".bmp", ".png" };
 
 
@@ -114,13 +117,6 @@ namespace PROG7312_POE.MVC.Controller
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
-        public ReportModel SearchByID(int ID)
-        {
-            var foundReport = ReportData.FirstOrDefault(x => x.ID == ID);
-            return foundReport;
-
-        }
-
         /// <summary>
         ///  Creates Dummy Data 
         /// </summary>
@@ -132,6 +128,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now.AddDays(-4),
                 ReportDescription = "I need help on getting a birth certificate for my son as I lost his previous one",
                 ReportLocation = "12 Bree Street,CBD,Cape Town, Western Province,South Africa",
+                Province = "Western Province",
                 ReportStatus = "Completed",
                 ReportType = "Birth and Parenting"
             };
@@ -141,6 +138,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now,
                 ReportDescription = "A large pothole has formed on Johan Street",
                 ReportLocation = "12 Johan Street,CBD,Johannesburg, Guateng,South Africa",
+                Province = "Guateng",
                 ReportStatus = "In Progress",
                 ReportType = "Roads"
             };
@@ -151,6 +149,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now.AddDays(-1),
                 ReportDescription = "There is a water leakage in the street causing a flood.",
                 ReportLocation = "14 Sunset Avenue, Sea Point, Cape Town, South Africa",
+                Province = "Western Province",
                 ReportStatus = "In Progress",
                 ReportType = "Utilities"
             };
@@ -162,6 +161,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "A tree has fallen blocking the road on Pine Street.",
                 ReportLocation = "45 Pine Street, Green Point, Cape Town, South Africa",
+                Province = "Western Province",
                 ReportStatus = "Completed",
                 ReportType = "Environment"
             };
@@ -173,6 +173,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now.AddDays(-3),
                 ReportDescription = "I need assistance with registering my business online.",
                 ReportLocation = "10 Main Street, Johannesburg, Guateng, South Africa",
+                Province = "Guateng",
                 ReportStatus = "In Progress",
                 ReportType = "Business and Economic Activity"
             };
@@ -184,6 +185,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "The streetlights are not working on Oak Avenue.",
                 ReportLocation = "78 Oak Avenue, Johannesburg, Guateng, South Africa",
+                Province = "Guateng",
                 ReportStatus = "Completed",
                 ReportType = "Transport"
             };
@@ -195,6 +197,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "A stray animal was found wandering around the neighborhood.",
                 ReportLocation = "22 Willow Road, Durban, Kwazulu-Natal, South Africa",
+                Province = "Kwazulu-Natal",
                 ReportStatus = "In Progress",
                 ReportType = "Social Services"
             };
@@ -205,6 +208,7 @@ namespace PROG7312_POE.MVC.Controller
                 ReportDate = DateTime.Now,
                 ReportDescription = "I need to aplly for a grant",
                 ReportLocation = "15 Campground Street,Rondebosch,Cape Town, Western Province,South Africa",
+                Province = "Western Province",
                 ReportStatus = "Submitted",
                 ReportType = "Birth and Parenting"
             };
@@ -226,25 +230,6 @@ namespace PROG7312_POE.MVC.Controller
             return count;
         }
         //=============================================================================== End of File =============================================================================
-
-        /// <summary>
-        /// Checks if the provided media type is a valid image extension
-        /// </summary>
-        /// <param name="mediaType"></param>
-        /// <returns></returns>
-        /// ----------------------------------------------------- Start of Method ------------------------------------------------
-        private bool IsValidImageExtension(string mediaType)
-        {
-            if (string.IsNullOrWhiteSpace(mediaType))
-                return false;
-
-            // Convert to lowercase to ensure case-insensitive comparison
-            mediaType = mediaType.ToLower();
-
-            // Check if the provided extension is in the list of valid extensions
-            return ImgExtensions.Contains(mediaType);
-        }
-        //======================================================= End of Method ===================================================
 
     }
 }

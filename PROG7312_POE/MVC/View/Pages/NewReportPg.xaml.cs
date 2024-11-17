@@ -137,6 +137,7 @@ namespace PROG7312_POE.MVVM.View.Pages
                     animateForward(StckPnlLocation, StckPnlCategory);
                     var Location = StreetTextBox.Text + ", "+ SuburbTextBox.Text+ ","+ CityTextBox.Text+", "+ ProvinceComboBox.SelectionBoxItem.ToString();
                     model.ReportLocation = Location;
+                    model.Province = ProvinceComboBox.SelectionBoxItem.ToString();
                     currentStep++;
                     StckPnlLocation.Visibility = Visibility.Hidden;
                     this.BtnPrevious.Visibility = Visibility.Visible;

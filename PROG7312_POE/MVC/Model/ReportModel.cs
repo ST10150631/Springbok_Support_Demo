@@ -8,41 +8,66 @@ using System.Windows.Media.Imaging;
 
 namespace PROG7312_POE.MVC.Model
 {
-    public class ReportModel : INotifyPropertyChanged
+    public class ReportModel 
     {
+        /// <summary>
+        /// Holds the ID of the report
+        /// </summary>
         public int ID { get; set; }
+        /// <summary>
+        /// Holds the Description of the report
+        /// </summary>
         public string ReportDescription { get; set; }
+        /// <summary>
+        /// Holds the Type of the report
+        /// </summary>
         public string ReportType { get; set; }
+        /// <summary>
+        /// Holds the Date of the report
+        /// </summary>
         public DateTime ReportDate { get; set; }
+        /// <summary>
+        /// Holds the Location of the report
+        /// </summary>
         public string ReportLocation { get; set; }
+        /// <summary>
+        /// Holds the Report Status
+        /// </summary>
         public string ReportStatus { get; set; }
+        /// <summary>
+        /// Holds the Province of the report
+        /// </summary>
+        public string Province { get; set; }
 
+        /// <summary>
+        /// Holds the data for the PDF files
+        /// </summary>
         public ObservableCollection<MediaNode> ReportPdfsData { get; set; }
+        /// <summary>
+        /// Holds a collection of video files
+        /// </summary>
         public ObservableCollection<MediaNode> ReportVideosData { get; set; }
+        /// <summary>
+        /// Holds a collection of image files
+        /// </summary>
         public ObservableCollection<MediaNode> ReportImagesData { get; set; }
 
 
         // Tree structure for media files
         public MediaNode MediaTreeRoot { get; set; }
-
-        private BitmapImage _currentImage;
-        public BitmapImage currentImage
-        {
-            get { return _currentImage; }
-            set
-            {
-                if (_currentImage != value)
-                {
-                    _currentImage = value;
-                    OnPropertyChanged();  // Notify the UI about the property change
-                }
-            }
-        }
-
+        /// <summary>
+        /// Holds the current node in the media tree
+        /// </summary>
         public MediaNode currentNode { get; set; }
-
+        /// <summary>
+        /// Holds a collection of valid image extensions
+        /// </summary>
         public string[] validImageExtensions = { ".jpg", ".jpeg", ".gif", ".bmp", ".png" };
 
+        /// <summary>
+        /// constructor for the ReportModel
+        /// </summary>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public ReportModel()
         {
             MediaTreeRoot = new MediaNode { Name = "Root" };  // Initialize the root of the media tree
@@ -50,30 +75,46 @@ namespace PROG7312_POE.MVC.Model
             ReportVideosData = new ObservableCollection<MediaNode>();
             ReportImagesData = new ObservableCollection<MediaNode>();
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        // Notify that a property has changed
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        /// <summary>
+        /// Adds a PDF to the report
+        /// </summary>
+        /// <param name="pdfNode"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public void AddPdf(MediaNode pdfNode)
         {
             ReportPdfsData.Add(pdfNode);
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Adds a video to the report
+        /// </summary>
+        /// <param name="videoNode"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public void AddVideo(MediaNode videoNode)
         {
             ReportVideosData.Add(videoNode);
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Adds an image to the report
+        /// </summary>
+        /// <param name="imageNode"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public void AddImage(MediaNode imageNode)
         {
             ReportImagesData.Add(imageNode);
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Finds all image files in the media tree
+        /// </summary>
+        /// <returns></returns>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public List<MediaNode> FindImageFiles()
         {
             var images = new List<MediaNode>();
@@ -86,19 +127,36 @@ namespace PROG7312_POE.MVC.Model
             });
             return images;
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
-        // Method to find PDFs
+        /// <summary>
+        /// Finds all PDF files in the media tree
+        /// </summary>
+        /// <returns></returns>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public List<MediaNode> FindPdfFiles()
         {
             return FindFilesByType(".pdf");
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
-        // Method to find MP4 files
+        /// <summary>
+        /// Finds All MP4 files in the media tree
+        /// </summary>
+        /// <returns></returns>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public List<MediaNode> FindMp4Files()
         {
             return FindFilesByType(".mp4");
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Finds Files by type in the media tree
+        /// </summary>
+        /// <param name="fileType"></param>
+        /// <returns></returns>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private List<MediaNode> FindFilesByType(string fileType)
         {
             var files = new List<MediaNode>();
@@ -111,7 +169,14 @@ namespace PROG7312_POE.MVC.Model
             });
             return files;
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Traverses the media tree
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="action"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void TraverseTree(MediaNode node, Action<MediaNode> action)
         {
             if (node == null)
@@ -124,5 +189,7 @@ namespace PROG7312_POE.MVC.Model
                 TraverseTree(child, action);
             }
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
     }
 }
+//=============================================================================== End of File =============================================================================
