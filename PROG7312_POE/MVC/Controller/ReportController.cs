@@ -80,7 +80,7 @@ public ObservableCollection<ReportModel> ReportData
         {
             report.ID = ReportData.Count + 1;
             report.ReportDate = DateTime.Now;
-            report.ReportStatus = "Filed";
+            report.ReportStatus = "Submitted";
             report.FindImageFiles();
             report.FindPdfFiles();
             report.FindMp4Files();

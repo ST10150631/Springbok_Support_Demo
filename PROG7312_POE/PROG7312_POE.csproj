@@ -38,11 +38,18 @@
     <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.6.6.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
       <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,9 +60,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -83,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVC\View\Pages\NewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVC\View\Pages\ServiceStatusPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVC\View\UserControls\ChartUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVC\View\UserControls\UserCntrlLocation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,9 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVC\Controller\AppThemes.cs" />
+    <Compile Include="MVC\Controller\ChartController.cs" />
     <Compile Include="MVC\Controller\NewsController.cs" />
     <Compile Include="MVC\Controller\ReportController.cs" />
     <Compile Include="MVC\Controller\MainController.cs" />
+    <Compile Include="MVC\Model\Tree Structures\BinaryTree.cs" />
+    <Compile Include="MVC\Model\Tree Structures\ReportNode.cs" />
     <Compile Include="MVC\Model\AnnouncementModel.cs" />
     <Compile Include="MVC\Model\DataTree.cs" />
     <Compile Include="MVC\Model\EventsModel.cs" />
@@ -160,11 +180,17 @@
     <Compile Include="MVC\View\Pages\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVC\View\Pages\ServiceStatusPage.xaml.cs">
+      <DependentUpon>ServiceStatusPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVC\View\Pages\SettingsPg.xaml.cs">
       <DependentUpon>SettingsPg.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVC\View\Pages\ViewReportPg.xaml.cs">
       <DependentUpon>ViewReportPg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVC\View\UserControls\ChartUserControl.xaml.cs">
+      <DependentUpon>ChartUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVC\View\UserControls\UserCntrlLocation.xaml.cs">
       <DependentUpon>UserCntrlLocation.xaml</DependentUpon>

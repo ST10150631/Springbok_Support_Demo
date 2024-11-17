@@ -84,8 +84,7 @@
                                 <ComboBoxItem Content="Transport"/>
                                 <ComboBoxItem Content="Social Services"/>
                                 <ComboBoxItem Content="Retirement and Death"/>
-                                <!-- Add more categories as needed -->
-                        </ComboBox>
+                            </ComboBox>
                     </StackPanel>
 
                     <!-- Description Box -->
