@@ -8,13 +8,13 @@ namespace PROG7312_POE.MVC.Model.Tree_Structures
 
         public string Content { get; set; }
         public List<CategoryNode> Children { get; set; }
-        public BinaryTree Reports { get; set; }
+        public ReportBinarySearchTree Reports { get; set; }
 
         public CategoryNode(string content)
         {
             Content = content;
             Children = new List<CategoryNode>();
-            Reports = new BinaryTree();
+            Reports = new ReportBinarySearchTree();
         }
 
         // Add a child node

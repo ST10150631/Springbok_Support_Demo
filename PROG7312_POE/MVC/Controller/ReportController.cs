@@ -1,5 +1,6 @@
 ﻿using PROG7312_POE.MVC.Model;
 using PROG7312_POE.MVC.Model.Tree_Structures;
+using PROG7312_POE.MVC.Model.Tree_Structures.PROG7312_POE.MVC.Model.Tree_Structures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,12 @@ namespace PROG7312_POE.MVC.Controller
         /// Holds the reports in memmory
         /// </summary>
         private ObservableCollection<ReportModel> _reportData;
+
+        /// <summary>
+        /// Holds the report min heap instance
+        /// </summary>
+        ReportMinHeap reportMinHeap;
+
         /// <summary>
         /// Instance of the category general tree
         /// </summary>
@@ -52,6 +59,7 @@ namespace PROG7312_POE.MVC.Controller
         {
             categoryGeneralTree = new CategoryGeneralTree();
             _reportData = new ObservableCollection<ReportModel>();
+             reportMinHeap = new ReportMinHeap();
             CreateDummyData();
         }
         //======================================================= End of Method ===================================================
@@ -83,18 +91,29 @@ namespace PROG7312_POE.MVC.Controller
         public void AddReport(ReportModel report)
         {
             report.ID = ReportData.Count + 1;
-            report.ReportDate = DateTime.Now;
             report.FindImageFiles();
             report.FindPdfFiles();
             report.FindMp4Files();
             ReportData.Add(report);
             ReportList.Add(report);
+            reportMinHeap.Insert(report);
             categoryGeneralTree.AddReportToCategory(report.ReportType, report);
             OnPropertyChanged(nameof(ReportData));
         }
         //======================================================= End of Method ===================================================
 
-       
+        /// <summary>
+        /// Gets all reports from the tree as an observable collection
+        /// </summary>
+        /// <returns></returns>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        public ObservableCollection<ReportModel> getAllReportsFromTree()
+        {
+            var reports = categoryGeneralTree.GetAllReports();
+            return reports;
+        }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
+
         public ReportModel SearchByID(int ID)
         {
             var foundReport = ReportData.FirstOrDefault(x => x.ID == ID);
@@ -110,7 +129,7 @@ namespace PROG7312_POE.MVC.Controller
         {
             var Report1 = new ReportModel
             {
-                ReportDate = DateTime.Now,
+                ReportDate = DateTime.Now.AddDays(-4),
                 ReportDescription = "I need help on getting a birth certificate for my son as I lost his previous one",
                 ReportLocation = "12 Bree Street,CBD,Cape Town, Western Province,South Africa",
                 ReportStatus = "Completed",
@@ -162,7 +181,7 @@ namespace PROG7312_POE.MVC.Controller
             // Report 6
             var Report6 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-4),
+                ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "The streetlights are not working on Oak Avenue.",
                 ReportLocation = "78 Oak Avenue, Johannesburg, Guateng, South Africa",
                 ReportStatus = "Completed",
@@ -173,7 +192,7 @@ namespace PROG7312_POE.MVC.Controller
             // Report 7
             var Report7 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-5),
+                ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "A stray animal was found wandering around the neighborhood.",
                 ReportLocation = "22 Willow Road, Durban, Kwazulu-Natal, South Africa",
                 ReportStatus = "In Progress",

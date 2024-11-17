@@ -4,6 +4,7 @@ using PROG7312_POE.MVC.View.Pages;
 using PROG7312_POE.MVVM.View.Styles;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -40,7 +41,7 @@ namespace PROG7312_POE.MVVM.View.Pages
             model = new ReportModel();
             InitializeComponent();
             BtnNext.Opacity = 0.5;
-            this.SiyaCntrl.SiyaTxt.Text = "  Hi there!\r\n  Welcome to the Springbok Support System.\r\n  My name is Siya the Springbok and I am here to help.\r\n  Let's start with the location of your issue:";
+            this.SiyaCntrl.SiyaTxt.Text = "  Hi there!\r\n  Welcome to the Springbok Support System.\r\n  My name is Siya the Springbok and I am here to help.\r\n  Let's start with the location of your issue: \n Enter the address of the Issue.And remember to include \n a number in the street";
             
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -134,7 +135,8 @@ namespace PROG7312_POE.MVVM.View.Pages
                 {
                     SiyaCntrl.SiyaTxtBg.Background = this.FindResource("MenuBrush") as Brush;
                     animateForward(StckPnlLocation, StckPnlCategory);
-                    model.ReportLocation = LocationTextBox.Text;
+                    var Location = StreetTextBox.Text + ", "+ SuburbTextBox.Text+ ","+ CityTextBox.Text+", "+ ProvinceComboBox.SelectionBoxItem.ToString();
+                    model.ReportLocation = Location;
                     currentStep++;
                     StckPnlLocation.Visibility = Visibility.Hidden;
                     this.BtnPrevious.Visibility = Visibility.Visible;
@@ -191,6 +193,7 @@ namespace PROG7312_POE.MVVM.View.Pages
             else if (currentStep == 4)
             {
                 model.ReportStatus = "Submitted";
+                model.ReportDate = DateTime.Now;
                 MainController.reportController.AddReport(model);
                 this.SiyaCntrl.SiyaTxt.Text = "  Thank you for submitting your report. \n  You will be redirected to the home page shortly.";
                 this.ProgressBar.Value = 100;
@@ -334,15 +337,25 @@ namespace PROG7312_POE.MVVM.View.Pages
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        private void LocationTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void IsValidLocation (object sender, TextChangedEventArgs e)
         {
-            if (LocationTextBox.Text == "")
+            // Check if the street, suburb, and city are not blank
+            bool isStreetValid = !string.IsNullOrWhiteSpace(StreetTextBox.Text);
+            bool isSuburbValid = !string.IsNullOrWhiteSpace(SuburbTextBox.Text);
+            bool isCityValid = !string.IsNullOrWhiteSpace(CityTextBox.Text);
+
+            // Check if the location contains at least one number
+            string street = StreetTextBox.Text;
+            bool containsNumber = street.Any(char.IsDigit);
+
+            // If all conditions are met, enable the button; otherwise, disable it
+            if (isStreetValid && isSuburbValid && isCityValid && containsNumber)
             {
-                BtnNext.Opacity = 0.5;
+                BtnNext.Opacity = 1; // Enable the button
             }
             else
             {
-                BtnNext.Opacity = 1;
+                BtnNext.Opacity = 0.5; // Disable the button
             }
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------

@@ -8,10 +8,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="900"
       Title="ServiceStatusPage">
+    <ScrollViewer>
+        <Grid Height="1150">
 
-    <Grid>
+            <UserControls:ChartUserControl  Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <UserControls:ChartUserControl  Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+    </ScrollViewer>
 
-    </Grid>
+    
 </Page>

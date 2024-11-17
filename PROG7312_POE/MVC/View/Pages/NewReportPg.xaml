@@ -57,9 +57,49 @@
                     <Canvas x:Name="CanvasNew" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" Width="500" Margin="0,30,0,0">
                     <!-- Location Input -->
                     <StackPanel x:Name="StckPnlLocation" HorizontalAlignment="Center">
-                        <TextBlock Text="Location Input:" FontWeight="Bold" Margin="0,0,0,5" Style="{DynamicResource TxtSecondary}"/>
-                        <TextBox x:Name="LocationTextBox" Style="{DynamicResource TxtBxPrimary}" Width="500" Height="25" TextChanged="LocationTextBox_TextChanged"/>
-                    </StackPanel>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- Province Selection -->
+                                <StackPanel>
+                                    <TextBlock Text="Select Province" FontWeight="Bold" Margin="5"/>
+                                    <ComboBox Name="ProvinceComboBox" Margin="5" Width="200">
+                                        <ComboBoxItem>Eastern Cape</ComboBoxItem>
+                                        <ComboBoxItem>Free State</ComboBoxItem>
+                                        <ComboBoxItem>Gauteng</ComboBoxItem>
+                                        <ComboBoxItem>KwaZulu-Natal</ComboBoxItem>
+                                        <ComboBoxItem>Limpopo</ComboBoxItem>
+                                        <ComboBoxItem>Mpumalanga</ComboBoxItem>
+                                        <ComboBoxItem>Northern Cape</ComboBoxItem>
+                                        <ComboBoxItem>North West</ComboBoxItem>
+                                        <ComboBoxItem IsSelected="True" >Western Cape</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <!-- City Input -->
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="City" FontWeight="Bold" Margin="5"/>
+                                    <TextBox Name="CityTextBox" Margin="5" Width="200" TextChanged="IsValidLocation"/>
+                                </StackPanel>
+                                <!-- Suburb Input -->
+                                <StackPanel Grid.Row="1">
+                                    <TextBlock Text="Suburb" FontWeight="Bold" Margin="5"/>
+                                    <TextBox Name="SuburbTextBox" Margin="5" Width="200" TextChanged="IsValidLocation" />
+                                </StackPanel>
+                                <!-- Street Input -->
+                                <StackPanel Grid.Row="1" Grid.Column="1">
+                                    <TextBlock Text="Street" FontWeight="Bold" Margin="5"/>
+                                    <TextBox Name="StreetTextBox" Margin="5" Width="200" TextChanged="IsValidLocation" />
+                                </StackPanel>
+
+                            </Grid>
+                            
+                        </StackPanel>
 
                     <!-- Category Selection -->
                     <StackPanel x:Name="StckPnlCategory" Visibility="Collapsed">

@@ -154,12 +154,12 @@
     <Compile Include="MVC\Controller\NewsController.cs" />
     <Compile Include="MVC\Controller\ReportController.cs" />
     <Compile Include="MVC\Controller\MainController.cs" />
-    <Compile Include="MVC\Model\Tree Structures\BinaryTree.cs" />
+    <Compile Include="MVC\Model\Tree Structures\ReportBinarySearchTree.cs" />
     <Compile Include="MVC\Model\Tree Structures\CategoryGeneralTree.cs" />
     <Compile Include="MVC\Model\Tree Structures\CategoryNode.cs" />
+    <Compile Include="MVC\Model\Tree Structures\ReportMinHeap.cs" />
     <Compile Include="MVC\Model\Tree Structures\ReportNode.cs" />
     <Compile Include="MVC\Model\AnnouncementModel.cs" />
-    <Compile Include="MVC\Model\DataTree.cs" />
     <Compile Include="MVC\Model\EventsModel.cs" />
     <Compile Include="MVC\Model\MediaModel.cs" />
     <Compile Include="MVC\Model\MediaNode.cs" />
