@@ -11,37 +11,37 @@
       Title="NewsPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="200"  />
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"  />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         
         <StackPanel  Height="50"  Width="auto" Grid.Row="0" Background="{DynamicResource TertiaryBrush}">
-            <TextBlock Text="Events and Announcement Categories"  Style="{DynamicResource TxtSecondary}"  Margin="10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Events and Announcement Categories"  Style="{DynamicResource TxtSecondary}"  Margin="5" HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" Height="180" Grid.Row="1" Background="{DynamicResource MenuBrush}" >
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" Height="130" Grid.Row="1" Background="{DynamicResource MenuBrush}" >
             
      
-        <StackPanel Orientation="Horizontal" Height="190" HorizontalAlignment="Center"  Margin="5"  >
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0"  >
 
 
-                <Grid Margin="0,0,0,20" Width="auto" >
+                <Grid  Width="auto" >
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="160" />
-                        <ColumnDefinition Width="160" />
-                        <ColumnDefinition Width="160" />
-                        <ColumnDefinition Width="160" />
-                        <ColumnDefinition Width="160" />
-                        <ColumnDefinition Width="160" />
-                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- All -->
 
-                    <Button Height="135" Width="150" x:Name="BtnCatAll" BorderBrush="#cc3825" BorderThickness="2" Margin="10,0" Click="BtnAll_Click" >
+                    <Button Height="125" Width="150" x:Name="BtnCatAll" BorderBrush="#cc3825" BorderThickness="2" Margin="10,0" Click="BtnAll_Click" >
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/NewsBtnImage.jpg"/>
                         </Button.Background>
@@ -50,7 +50,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Sports -->
-                    <Button Height="135" Width="150"  x:Name="BtnCatSport" Grid.Column="1" BorderBrush="#15aed4" BorderThickness="2" Margin="10,0" Click="BtnCatSport_Click" >
+                    <Button Height="125" Width="150"  x:Name="BtnCatSport" Grid.Column="1" BorderBrush="#15aed4" BorderThickness="2" Margin="10,0" Click="BtnCatSport_Click" >
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/ImgSportsCate.jpg"/>
                         </Button.Background>
@@ -59,7 +59,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Entertainment -->
-                    <Button Height="135" Width="150"  x:Name="BtnCatEntertainment" Grid.Column="2" BorderBrush="#2f5e24" BorderThickness="2" Margin="10,0" Click="BtnCatEntertainment_Click">
+                    <Button Height="125" Width="150"  x:Name="BtnCatEntertainment" Grid.Column="2" BorderBrush="#2f5e24" BorderThickness="2" Margin="10,0" Click="BtnCatEntertainment_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/EntertainmentCategory.jpg"/>
                         </Button.Background>
@@ -68,7 +68,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Community -->
-                    <Button Height="135" Width="150"  x:Name="BtnCatCommunity" Grid.Column="3" BorderBrush="#d1ba0d" BorderThickness="2" Margin="10,0" Click="BtnCommunity_Click">
+                    <Button Height="125" Width="150"  x:Name="BtnCatCommunity" Grid.Column="3" BorderBrush="#d1ba0d" BorderThickness="2" Margin="10,0" Click="BtnCommunity_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/CommunityCategory.jpg"/>
                         </Button.Background>
@@ -77,7 +77,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Business and innovation -->
-                    <Button Height="135" Width="150"  x:Name="BtnCatBusiness" Grid.Column="4" BorderBrush="#161717" BorderThickness="2" Margin="10,0" Click="BtnBusiness_Click">
+                    <Button Height="125" Width="150"  x:Name="BtnCatBusiness" Grid.Column="4" BorderBrush="#161717" BorderThickness="2" Margin="10,0" Click="BtnBusiness_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/CategoryBusiness.png"/>
                         </Button.Background>
@@ -86,7 +86,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Performing Arts -->
-                    <Button Height="135" Width="150" x:Name="BtnCatArt" Grid.Column="5" BorderBrush="#b32bbd" BorderThickness="2" Margin="10,0" Click="BtnCatArt_Click">
+                    <Button Height="125" Width="150" x:Name="BtnCatArt" Grid.Column="5" BorderBrush="#b32bbd" BorderThickness="2" Margin="10,0" Click="BtnCatArt_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/CategoryArt.jpg"/>
                         </Button.Background>
@@ -95,7 +95,7 @@
                         </StackPanel>
                     </Button>
                     <!-- Lifestyle -->
-                    <Button Height="135" Width="150"  x:Name="BtnCatLifestyle" Grid.Column="6" BorderBrush="#e67529" BorderThickness="2" Margin="10,0" Click="BtnCatLifestyle_Click">
+                    <Button Height="125" Width="150"  x:Name="BtnCatLifestyle" Grid.Column="6" BorderBrush="#e67529" BorderThickness="2" Margin="10,0" Click="BtnCatLifestyle_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="/Img/CategoryLifestyle.jpg"/>
                         </Button.Background>
@@ -103,21 +103,6 @@
                             <TextBlock Text="Lifestyle" Style="{DynamicResource TxtSecondary}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                         </StackPanel>
                     </Button>
-                    <!-- Other -->
-                    <ItemsControl ItemsSource="{Binding Categories}" x:Name="CategoryIC" Grid.Column="7">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Height="135" Width="150"  Grid.Column="7" BorderBrush="#213b82" BorderThickness="2" Margin="10,0" Click="BtnCatLifestyle_Click">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="/Img/CPT BG.jpg"/>
-                                    </Button.Background>
-                                    <StackPanel VerticalAlignment="Bottom" Background="#213b82" Margin="0,80,0,0" Width="140">
-                                        <TextBlock Text="{Binding Category}" Style="{DynamicResource TxtSecondary}" Foreground="AliceBlue" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                    </StackPanel>
-                                </Button>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
                 </Grid>
             </StackPanel>
         </ScrollViewer>
@@ -173,27 +158,27 @@
                     <!-- Events Display -->
                     <Border  x:Name="EventDetails" CornerRadius="20" Margin="5" Background="{DynamicResource PrimaryBrush}" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical" Margin="10">
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                
-                                <Image x:Name="LogoImg" Source="/Img/Spring Support (1).png" HorizontalAlignment="Left"  Width="80" Height="80"  />
-                                <TextBlock x:Name="TxtEventName" FontSize="50" Text="Name" HorizontalAlignment="Center" Style="{DynamicResource TitleForeground}" Margin="150,0,0,0" />
-
-                            </StackPanel>
                             <!-- Media -->
-                            <Grid Height="400">
+                            <Grid Height="auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
-                               
-                                    <Button x:Name="BtnBackMedia" Style="{DynamicResource btnPrimary}"  Width="100" Height="300" HorizontalAlignment="Left" Click="BtnBackMedia_Click" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Image x:Name="LogoImg" Source="/Img/Spring Support (1).png" HorizontalAlignment="Left"  Width="80" Height="80"  />
+                                <TextBlock x:Name="TxtEventName" TextWrapping="Wrap" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="1" FontSize="40" Text="Name" HorizontalAlignment="Left" Style="{DynamicResource TitleForeground}"  />
+
+                                <Button x:Name="BtnBackMedia" Grid.Row="1" MinHeight="0"  MaxHeight="100"  Style="{DynamicResource btnPrimary}"  Width="100" Height="auto" HorizontalAlignment="Left" Click="BtnBackMedia_Click" >
                                         <StackPanel Orientation="Horizontal" Margin="0">
                                             <fa:IconImage Icon="ArrowCircleLeft" Foreground="{DynamicResource PrimaryBrush}" VerticalAlignment="Center" Height="100" Margin="5"/>
                                         </StackPanel>
                                     </Button>
-                                    <Image  x:Name="MediaDisplay" Grid.Column="1"/>
-                                <Button x:Name="BtnNextMedia" Style="{DynamicResource btnPrimary}" Grid.Column="2"  Width="100" Height="300"   HorizontalAlignment="Right" Click="BtnNextMedia_Click">
+                                <Image  x:Name="MediaDisplay" MinHeight="0"  MaxHeight="600"  HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1"/>
+                                <Button x:Name="BtnNextMedia" MinHeight="0" MaxHeight="100"  Grid.Row="1" Style="{DynamicResource btnPrimary}" Grid.Column="2"  Width="100" Height="auto"   HorizontalAlignment="Right" Click="BtnNextMedia_Click">
                                     <StackPanel Orientation="Horizontal" Margin="0">
                                         <fa:IconImage Icon="ArrowCircleRight" Foreground="{DynamicResource PrimaryBrush}" VerticalAlignment="Center" Height="100" Margin="5"/>
                                     </StackPanel>
@@ -209,24 +194,24 @@
                             <!-- Category -->
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Category: " Style="{DynamicResource TxtSecondary}" Margin="10"/>
-                                <TextBlock x:Name="TxtCategory" Text="00:00 13 January 2024" Style="{DynamicResource TxtSecondary}" Margin="10"/>
+                                <TextBlock x:Name="TxtCategory" TextWrapping="Wrap" Text="00:00 13 January 2024" Style="{DynamicResource TxtSecondary}" Margin="10"/>
                             </StackPanel>
 
                             <!-- Venue -->
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Venue: " Style="{DynamicResource TxtSecondary}" Margin="10"/>
-                                <TextBlock x:Name="TxtVenue" Text="Somewhere" Style="{DynamicResource TxtSecondary}" Margin="10"/>
+                                <TextBlock Text="Venue: "  Style="{DynamicResource TxtSecondary}" Margin="10"/>
+                                <TextBlock x:Name="TxtVenue" TextWrapping="Wrap" Text="Somewhere" Style="{DynamicResource TxtSecondary}" Margin="10"/>
                             </StackPanel>
                             <!-- Description -->
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Description: " VerticalAlignment="Top" Style="{DynamicResource TxtSecondary}" Margin="10"/>
-                                <TextBlock x:Name="TxtDescription" Text="Some stuff" Style="{DynamicResource TxtSecondary}" Margin="10" />
+                                <TextBlock x:Name="TxtDescription" TextWrapping="Wrap" Text="Some stuff" Style="{DynamicResource TxtSecondary}" Margin="10" />
                             </StackPanel>
 
                             <!-- Organizer-->
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Organizer: " Style="{DynamicResource TxtSecondary}" Margin="10"/>
-                                <TextBlock x:Name="TxtOrganizer" Text="Someone" Style="{DynamicResource TxtSecondary}" Margin="10"/>
+                                <TextBlock x:Name="TxtOrganizer" TextWrapping="Wrap" Text="Someone" Style="{DynamicResource TxtSecondary}" Margin="10"/>
                             </StackPanel>
                         </StackPanel>
 
@@ -237,9 +222,9 @@
                             <DataTemplate>
                                 <Border BorderBrush="{DynamicResource MenuBrush}" CornerRadius="10" BorderThickness="1" Margin="5" Padding="10">
                                     <StackPanel>
-                                        <TextBlock FontWeight="Bold" Text="{Binding Title}" Style="{DynamicResource TitleForeground}"  Margin="0,10,200,0"  HorizontalAlignment="Center"/>
+                                        <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding Title}" Style="{DynamicResource TitleForeground}"  Margin="0,10,200,0"  HorizontalAlignment="Center"/>
                                         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" >
-                                            <TextBlock Text="{Binding Date}" Style="{DynamicResource TxtSecondary}" />
+                                            <TextBlock Text="{Binding Date}" TextWrapping="Wrap" Style="{DynamicResource TxtSecondary}" />
 
                                         </StackPanel>
                                         <!-- Media Navigation Section -->
@@ -271,22 +256,23 @@
                                         </Grid>
                                         <StackPanel Orientation="Horizontal" >
                                             <TextBlock Text="Event: " Style="{DynamicResource TxtSecondary}" />
-                                            <TextBlock Text="{Binding Event}" Style="{DynamicResource TxtSecondary}"  />
+                                            <TextBlock Text="{Binding Event}" TextWrapping="Wrap" Style="{DynamicResource TxtSecondary}"  />
                                         </StackPanel>
                                         
                                         <StackPanel Background="{DynamicResource PrimaryBrush}">
                                             <TextBlock Text="Description: " Style="{DynamicResource TxtSecondary}" />
-                                            <TextBlock Text="{Binding Description}" Style="{DynamicResource TxtSecondary}" />
+
+                                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap"  Style="{DynamicResource TxtSecondary}" />
                                         </StackPanel>
                                         
                                         <StackPanel Orientation="Horizontal" >
-                                            <TextBlock Text="Author: " Style="{DynamicResource TxtSecondary}" />
-                                            <TextBlock Text="{Binding Author}" Style="{DynamicResource TxtSecondary}" />
+                                            <TextBlock Text="Author: "  Style="{DynamicResource TxtSecondary}" />
+                                            <TextBlock Text="{Binding Author}" TextWrapping="Wrap" Style="{DynamicResource TxtSecondary}" />
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal" >
                                             <TextBlock Text="Location: " Style="{DynamicResource TxtSecondary}" />
-                                            <TextBlock Text="{Binding Location}" Style="{DynamicResource TxtSecondary}"  />
+                                            <TextBlock Text="{Binding Location}" TextWrapping="Wrap" Style="{DynamicResource TxtSecondary}"  />
 
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">

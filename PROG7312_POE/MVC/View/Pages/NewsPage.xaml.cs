@@ -43,9 +43,6 @@ namespace PROG7312_POE.MVC.View.Pages
             AnnouncementsItemsControl.Items.Clear();
             AnnouncementsItemsControl.DataContext = MainController.newsController;
             AnnouncementsItemsControl.ItemsSource = MainController.newsController.GetAnnouncements();
-            CategoryIC.DataContext = MainController.newsController.Categories;
-            CategoryIC.ItemsSource = MainController.newsController.Categories.ToList();
-
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 

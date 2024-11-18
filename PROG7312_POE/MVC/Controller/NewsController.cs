@@ -3,9 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace PROG7312_POE.MVC.Controller
@@ -16,9 +19,15 @@ namespace PROG7312_POE.MVC.Controller
         /// Holds Categries as a hashSet
         /// </summary>
         public HashSet<string> Categories ;
+        /// <summary>
+        /// Holds categories to be displayed as a list
+        /// </summary>
+        public ObservableCollection<string> CategoryList { get; set; }
         // List to store event models
         private List<EventsModel> _events;
-
+        /// <summary>
+        /// Holds Category Scores
+        /// </summary>
         private Dictionary<string,int> _categoryScores;
         /// <summary>
         /// Property to get or set events list, triggers property change notification
@@ -69,6 +78,8 @@ namespace PROG7312_POE.MVC.Controller
             Categories.Add("Community".ToUpper());
             Categories.Add("Arts".ToUpper());
             Categories.Add("Lifestyle".ToUpper());
+            Categories.Add("Other".ToUpper());
+            CategoryList = new ObservableCollection<string>(Categories);
             Events = new List<EventsModel>();
             Announcements = new ObservableCollection<AnnouncementModel>();
             LoadEvents();
@@ -121,6 +132,7 @@ namespace PROG7312_POE.MVC.Controller
             UpdateCategoryScore(category); // Increment score
 
             Categories.Add(newEvent.EventDetails["Category"]);
+            CategoryList = new ObservableCollection<string>(Categories);
             OnPropertyChanged(nameof(Events));
 
         }
@@ -387,11 +399,118 @@ namespace PROG7312_POE.MVC.Controller
             jobFair.addDataToEvent("StartTime", "10:00");
             jobFair.addDataToEvent("EndTime", "15:00");
             jobFair.addDataToEvent("Organizer", "Career Expo SA");
-            jobFair.addDataToEvent("Category", "Job Fair");
+            jobFair.addDataToEvent("Category", "Business");
 
             Events.Add(jobFair);
+            // Create the second event (Job Fair Cape Town)
+            var SpringBokTour = new EventsModel();
+            SpringBokTour.addDataToEvent("Name", "Springbok Tour");
+            SpringBokTour.addDataToEvent("Description", "The much beloved Springboks will be touring SA in a bus");
+            SpringBokTour.addDataToEvent("Venue", "Cape Town, PE, Johannesburg, Pretoria, KZN");
+            SpringBokTour.addDataToEvent("StartDate", "2024-10-11");
+            SpringBokTour.addDataToEvent("EndDate", "2024-11-11");
+            SpringBokTour.addDataToEvent("StartTime", "10:00");
+            SpringBokTour.addDataToEvent("EndTime", "15:00");
+            SpringBokTour.addDataToEvent("Organizer", "National Rugby Assosciation");
+            SpringBokTour.addDataToEvent("Category", "Sport");
+
+            Events.Add(SpringBokTour);
+            // Create the fourth event (Community Cleanup Drive)
+            var cleanupDrive = new EventsModel();
+            cleanupDrive.addDataToEvent("Name", "Community Cleanup Drive");
+            cleanupDrive.addDataToEvent("Description", "Join hands with the community to clean local parks and streets.");
+            cleanupDrive.addDataToEvent("Venue", "Greenwood Park, Cape Town");
+            cleanupDrive.addDataToEvent("StartDate", "2024-12-01");
+            cleanupDrive.addDataToEvent("EndDate", "2024-12-01");
+            cleanupDrive.addDataToEvent("StartTime", "08:00");
+            cleanupDrive.addDataToEvent("EndTime", "12:00");
+            cleanupDrive.addDataToEvent("Organizer", "Cape Town Community Organization");
+            cleanupDrive.addDataToEvent("Category", "Community");
+
+            Events.Add(cleanupDrive);
+
+            // Create the fifth event (Cape Town Music Festival)
+            var musicFestival = new EventsModel();
+            musicFestival.addDataToEvent("Name", "Cape Town Music Festival");
+            musicFestival.addDataToEvent("Description", "A grand celebration of music featuring top artists and bands.");
+            musicFestival.addDataToEvent("Venue", "Cape Town Stadium");
+            musicFestival.addDataToEvent("StartDate", "2024-12-15");
+            musicFestival.addDataToEvent("EndDate", "2024-12-17");
+            musicFestival.addDataToEvent("StartTime", "15:00");
+            musicFestival.addDataToEvent("EndTime", "22:00");
+            musicFestival.addDataToEvent("Organizer", "Cape Entertainment Group");
+            musicFestival.addDataToEvent("Category", "Entertainment");
+
+            Events.Add(musicFestival);
+            LoadAnnoucements();
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
+
+        private void LoadAnnoucements()
+        {
+            ///Announcement Dummy Data
+            var SpringbokTourAnnouncement1 = new AnnouncementModel()
+            {
+                Title = "Support the Springboks on Tour!",
+                Description = "Join the nation in celebrating the Springboks as they tour South Africa! Show your support at their stops across major cities. Next they are heading to cape Town !",
+                Author = "National Rugby Association",
+                Location = "Cape Town CBD and main road", // Matches the Springbok Tour venues
+                Website = "www.springboksontour.co.za",
+                Media = new ObservableCollection<MediaModel>(),
+                Date = DateTime.Now
+            };
+            AddAnnouncement("Springbok Tour", SpringbokTourAnnouncement1);
+            ///Announcement Dummy Data
+            var SpringbokTourAnnouncement2 = new AnnouncementModel()
+            {
+                Title = "Support the Springboks on Tour!",
+                Description = "Join the nation in celebrating the Springboks as they tour South Africa! Show your support at their stops across major cities. Next they are heading to PE !\"",
+                Author = "National Rugby Association",
+                Location = "Port Elizibeth Waterfront", // Matches the Springbok Tour venues
+                Website = "www.springboksontour.co.za",
+                Media = new ObservableCollection<MediaModel>(),
+                Date = DateTime.Now
+            };
+            AddAnnouncement("Springbok Tour", SpringbokTourAnnouncement2);
+            // Announcement Dummy Data
+            var musicFestivalAnnouncement1 = new AnnouncementModel()
+            {
+                Title = "Experience the Best of Music in Cape Town!",
+                Description = "Join us at the Cape Town Music Festival for an unforgettable weekend of top-notch performances and entertainment. Next, don't miss the evening concert at the Cape Town Stadium!",
+                Author = "Cape Entertainment Group",
+                Location = "Cape Town Stadium - Main Arena",
+                Website = "www.capetownmusicfestival.co.za",
+                Media = new ObservableCollection<MediaModel>(),
+                Date = DateTime.Now
+            };
+            AddAnnouncement("Cape Town Music Festival", musicFestivalAnnouncement1);
+
+            // Announcement Dummy Data
+            var musicFestivalAnnouncement2 = new AnnouncementModel()
+            {
+                Title = "Cape Town Music Festival is Here!",
+                Description = "Don't miss the Cape Town Music Festival. Enjoy live performances, food stalls, and fun activities all day! Perfect for friends and family!",
+                Author = "Cape Entertainment Group",
+                Location = "Cape Town Stadium - Outdoor Stages",
+                Website = "www.capetownmusicfestival.co.za",
+                Media = new ObservableCollection<MediaModel>(),
+                Date = DateTime.Now
+            };
+            AddAnnouncement("Cape Town Music Festival", musicFestivalAnnouncement2);
+
+            // Announcement Dummy Data
+            var musicFestivalAnnouncement3 = new AnnouncementModel()
+            {
+                Title = "Countdown to the Cape Town Music Festival!",
+                Description = "The Cape Town Music Festival is almost here! Plan your weekend and join the celebration. The event starts at 3 PM. Tickets are selling fast!",
+                Author = "Cape Entertainment Group",
+                Location = "Cape Town Stadium",
+                Website = "www.capetownmusicfestival.co.za",
+                Media = new ObservableCollection<MediaModel>(),
+                Date = DateTime.Now
+            };
+            AddAnnouncement("Cape Town Music Festival", musicFestivalAnnouncement3);
+        }
 
         /// <summary>
         /// Notifies listeners of property changes.

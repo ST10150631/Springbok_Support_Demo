@@ -46,6 +46,7 @@ namespace PROG7312_POE.MVC.View.Pages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnReports_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as MainWindow;
@@ -53,5 +54,6 @@ namespace PROG7312_POE.MVC.View.Pages
             parentWindow.RbtnHome.IsChecked = true;
             parentWindow.ContentPane.Content = reports;
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
     }
 }

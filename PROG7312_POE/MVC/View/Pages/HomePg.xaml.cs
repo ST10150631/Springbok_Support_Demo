@@ -28,11 +28,12 @@ namespace PROG7312_POE.MVVM.View.Pages
         public HomePg()
         {
             InitializeComponent();
-            ItemsCntrlEvents.DataContext = MainController.newsController;
-            ItemsCntrlEvents.ItemsSource = MainController.newsController.GetEvents();
+            
             ReportItemsControl.Items.Clear();
             ReportItemsControl.DataContext = MainController.reportController;
             ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
+            ItemsCntrlEvents.DataContext = MainController.newsController;
+            ItemsCntrlEvents.ItemsSource = MainController.newsController.GetEvents();
         }
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)

@@ -15,7 +15,8 @@ namespace PROG7312_POE.MVC.Model.Tree_Structures
         /// </summary>
         private CategoryNode Root;
 
-       
+        
+
 
         /// <summary>
         /// Constructor
@@ -84,7 +85,8 @@ namespace PROG7312_POE.MVC.Model.Tree_Structures
 
 
         /// <summary>
-        /// Add a report to the binary tree of a specific category
+        /// Add a report to the binary tree of reports in a specific category 
+        /// in the category tree
         /// </summary>
         /// <param name="category"></param>
         /// <param name="report"></param>
