@@ -136,10 +136,29 @@ namespace PROG7312_POE.MVC.Controller
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void InitTableData()
         {
+            ///Gets reports from the heap ordered by Date
             var reportsFromHeap = MainController.reportController.getAllReportsFromTree();
-            foreach (var report in reportsFromHeap)
+            // Group reports by their status
+            var groupedReports = reportsFromHeap
+                .GroupBy(r => r.ReportStatus)
+                .OrderByDescending(g => g.Key);
+            // Iterate through each group and add reports to TableData
+            foreach (var group in groupedReports)
             {
-                TableData.Add(new DataRow { ID = "Report: " + report.ID, Description = report.ReportDescription , Category = report.ReportType, Location = report.ReportLocation,Status = report.ReportStatus });
+                foreach (var report in group)
+                {
+                    //The resulting data will be orderd by status being Submitted first, then In Progress and finally Completed 
+                    //Displaying the oldest reports first
+                    TableData.Add(new DataRow
+                    {
+                        ID = "Report: " + report.ID,
+                        Description = report.ReportDescription,
+                        Category = report.ReportType,
+                        Location = report.ReportLocation,
+                        Status = report.ReportStatus,
+                        Date = report.ReportDate.ToShortDateString()
+                    });
+                }
             }
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -208,6 +227,7 @@ namespace PROG7312_POE.MVC.Controller
         public string Category { get; set; }
         public string Location { get; set; }
         public string Status { get; set; }
+        public string Date { get; set; }    
     }
 }
 

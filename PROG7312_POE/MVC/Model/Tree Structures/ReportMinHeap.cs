@@ -121,20 +121,12 @@ namespace PROG7312_POE.MVC.Model.Tree_Structures
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private int CompareReports(ReportModel report1, ReportModel report2)
         {
-            // Define the priority order for statuses: "submitted" > "in progress" > "complete".
-            var statusPriority = new Dictionary<string, int>
-            {
-                { "Submitted", 3 },
-                { "In Progress", 2 },
-                { "Completed", 0 }
-            };
+            // Compare based on the Date first.
+            int dateComparison = report1.ReportDate.CompareTo(report2.ReportDate);
+            if (dateComparison != 0) return dateComparison; // If dates are different, return the comparison result.
 
-            // Compare based on status first.
-            int statusComparison = statusPriority[report1.ReportStatus].CompareTo(statusPriority[report2.ReportStatus]);
-            if (statusComparison != 0) return statusComparison; // If statuses are different, return the comparison result.
-
-            // If statuses are the same, compare by ID.
-            return report1.ID.CompareTo(report2.ID); // Compare the IDs if the statuses are equal.
+            // If dates are the same, compare by ID.
+            return report1.ID.CompareTo(report2.ID); // Compare the IDs if the dates are equal.
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 

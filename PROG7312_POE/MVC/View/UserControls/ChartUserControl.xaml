@@ -46,19 +46,20 @@
                 <lvc:Axis Title="Categories" Labels="{Binding BarChartLabels}"  />
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
+        <!-- Stats -->
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Border  Margin="10" CornerRadius="20" Background="{DynamicResource MenuBrush}">
+            <Border  Margin="5,0,0,0" CornerRadius="20" Background="{DynamicResource MenuBrush}">
                 <StackPanel>
                     <TextBlock Text="Total Issues:" Style="{DynamicResource TitlePrimary}" Margin="10"/>
-                    <TextBlock Text="{Binding TotalReports}" FontSize="40" HorizontalAlignment="Center" Style="{DynamicResource TitlePrimary}" FontWeight="Bold" Margin="10"/>
+                    <TextBlock Text="{Binding TotalReports}" FontSize="40" HorizontalAlignment="Center" Style="{DynamicResource TitlePrimary}" FontWeight="Bold" Margin="5"/>
 
                 </StackPanel>
 
             </Border>
-            <Border  Margin="10" CornerRadius="20" Background="{DynamicResource MenuBrush}">
+            <Border  Margin="5,2,0,0" CornerRadius="20" Background="{DynamicResource MenuBrush}">
                 <StackPanel>
                     <TextBlock Text="In Progress:" Style="{DynamicResource TitlePrimary}" Margin="10"/>
-                    <TextBlock Text="{Binding InProgress}" FontSize="40" HorizontalAlignment="Center" Style="{DynamicResource TitlePrimary}" FontWeight="Bold" Margin="10"/>
+                    <TextBlock Text="{Binding InProgress}" FontSize="40" HorizontalAlignment="Center" Style="{DynamicResource TitlePrimary}" FontWeight="Bold" Margin="5"/>
 
                 </StackPanel>
 

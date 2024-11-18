@@ -133,7 +133,7 @@ namespace PROG7312_POE.MVC.Controller
         {
             var Report1 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-4),
+                ReportDate = DateTime.Now.AddDays(-5),
                 ReportDescription = "I need help on getting a birth certificate for my son as I lost his previous one",
                 ReportLocation = "12 Bree Street,CBD,Cape Town, Western Province,South Africa",
                 Province = "Western Province",
@@ -143,7 +143,7 @@ namespace PROG7312_POE.MVC.Controller
             AddReport(Report1);
             var Report2 = new ReportModel
             {
-                ReportDate = DateTime.Now,
+                ReportDate = DateTime.Now.AddDays(-4),
                 ReportDescription = "A large pothole has formed on Johan Street",
                 ReportLocation = "12 Johan Street,CBD,Johannesburg, Guateng,South Africa",
                 Province = "Guateng",
@@ -154,7 +154,7 @@ namespace PROG7312_POE.MVC.Controller
             // Report 3
             var Report3 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-1),
+                ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "There is a water leakage in the street causing a flood.",
                 ReportLocation = "14 Sunset Avenue, Sea Point, Cape Town, South Africa",
                 Province = "Western Province",
@@ -178,7 +178,7 @@ namespace PROG7312_POE.MVC.Controller
             // Report 5
             var Report5 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-3),
+                ReportDate = DateTime.Now.AddDays(-2),
                 ReportDescription = "I need assistance with registering my business online.",
                 ReportLocation = "10 Main Street, Johannesburg, Guateng, South Africa",
                 Province = "Guateng",
@@ -190,7 +190,7 @@ namespace PROG7312_POE.MVC.Controller
             // Report 6
             var Report6 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-2),
+                ReportDate = DateTime.Now.AddDays(-1),
                 ReportDescription = "The streetlights are not working on Oak Avenue.",
                 ReportLocation = "78 Oak Avenue, Johannesburg, Guateng, South Africa",
                 Province = "Guateng",
@@ -202,7 +202,7 @@ namespace PROG7312_POE.MVC.Controller
             // Report 7
             var Report7 = new ReportModel
             {
-                ReportDate = DateTime.Now.AddDays(-2),
+                ReportDate = DateTime.Now.AddDays(-1),
                 ReportDescription = "A stray animal was found wandering around the neighborhood.",
                 ReportLocation = "22 Willow Road, Durban, Kwazulu-Natal, South Africa",
                 Province = "Kwazulu-Natal",
@@ -213,7 +213,7 @@ namespace PROG7312_POE.MVC.Controller
 
             var Report8 = new ReportModel
             {
-                ReportDate = DateTime.Now,
+                ReportDate = DateTime.Now.AddDays(-1),
                 ReportDescription = "I need to aplly for a grant",
                 ReportLocation = "15 Campground Street,Rondebosch,Cape Town, Western Province,South Africa",
                 Province = "Western Province",
