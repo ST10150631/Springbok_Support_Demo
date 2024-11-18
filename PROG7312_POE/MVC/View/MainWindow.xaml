@@ -197,16 +197,6 @@
                             </StackPanel>
                         </RadioButton>
 
-                        <!-- Exit Button-->
-                        <Button x:Name="BtnLogout" Style="{DynamicResource btnPrimary}" Height="57"  Margin="20,20,0,0" VerticalAlignment="Bottom" >
-
-                            <StackPanel Orientation="Horizontal" >
-                                <fa:IconImage Icon="DoorOpen"  Style="{DynamicResource menuButtonIcon}"  Margin="0,0,10,0"/>
-                                <TextBlock Text="Log out " Style="{DynamicResource menuButtonText}" />
-
-                            </StackPanel>
-                        </Button>
-
 
 
 

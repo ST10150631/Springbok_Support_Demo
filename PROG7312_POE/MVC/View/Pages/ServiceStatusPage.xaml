@@ -6,13 +6,38 @@
       xmlns:local="clr-namespace:PROG7312_POE.MVC.View.Pages"
       xmlns:UserControls="clr-namespace:PROG7312_POE.MVC.View.UserControls" x:Class="PROG7312_POE.MVC.View.Pages.ServiceStatusPage"
       mc:Ignorable="d" 
+      xmlns:fa ="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       d:DesignHeight="650" d:DesignWidth="900"
       Title="ServiceStatusPage">
     <ScrollViewer>
         <Grid Height="1150">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <UserControls:ChartUserControl  Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
+            <Button HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" x:Name="BtnHome" Style="{DynamicResource btnPrimary}"   Margin="10" Click="BtnHome_Click">
+                <StackPanel Orientation="Horizontal" >
+                    <fa:IconImage  Icon="Home" Width="30" Foreground="White" Margin="10"/>
+                    <TextBlock Text="Return Home" Style="{DynamicResource TxtPrimary}" Margin="10"/>
+                </StackPanel>
+            </Button>
+            
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Service Status" Style="{DynamicResource TitleForeground}" Margin="10"/>
+            
+            <UserControls:ChartUserControl Grid.Row="1" Grid.ColumnSpan="3" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" x:Name="BtnReports" Style="{DynamicResource btnPrimary}"    Margin="0,10,0,0" Height="80" VerticalAlignment="Top" Click="BtnReports_Click">
+                <StackPanel Orientation="Horizontal" >
+                    <fa:IconImage  Icon="Newspaper" Width="30" Foreground="White" Margin="10"/>
+                    <TextBlock Text="View All Reports" Style="{DynamicResource TxtPrimary}" Margin="10"/>
+                </StackPanel>
+            </Button>
         </Grid>
     </ScrollViewer>
 

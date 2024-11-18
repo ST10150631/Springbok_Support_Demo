@@ -2,6 +2,7 @@
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using PROG7312_POE.MVC.Model;
+using PROG7312_POE.MVC.Model.Tree_Structures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +14,11 @@ namespace PROG7312_POE.MVC.Controller
 {
     internal class ChartController
     {
+        /// <summary>
+        /// Holds the report min heap instance
+        /// </summary>
+        ReportMinHeap reportMinHeap;
+
         /// <summary>
         /// Holds Line Chart Values
         /// </summary>
@@ -81,7 +87,12 @@ namespace PROG7312_POE.MVC.Controller
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public ChartController()
         {
+            reportMinHeap = new ReportMinHeap();
             var reports = MainController.reportController.getAllReportsFromTree();
+            foreach (var report in reports)
+            {
+                reportMinHeap.Insert(report);
+            }
             TotalReports = reports.Count;
             TotalResolvedReports = reports.Count(r => r.ReportStatus == "Completed");
             InProgress = reports.Count(r => r.ReportStatus == "In Progress");
@@ -93,7 +104,7 @@ namespace PROG7312_POE.MVC.Controller
             // Bar Chart Data
             InitBarGraph();
             //Initialize Table Data
-            InitTableData(reports);
+            InitTableData();
             
 
 
@@ -123,9 +134,10 @@ namespace PROG7312_POE.MVC.Controller
         /// Initialize Table with data
         /// </summary>
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        private void InitTableData(ObservableCollection<ReportModel> reports)
+        private void InitTableData()
         {
-            foreach (var report in reports)
+            var reportsFromHeap = MainController.reportController.getAllReportsFromTree();
+            foreach (var report in reportsFromHeap)
             {
                 TableData.Add(new DataRow { ID = "Report: " + report.ID, Description = report.ReportDescription , Category = report.ReportType, Location = report.ReportLocation,Status = report.ReportStatus });
             }

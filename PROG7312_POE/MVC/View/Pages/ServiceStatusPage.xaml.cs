@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PROG7312_POE.MVVM.View.Pages;
+using PROG7312_POE.MVVM.View.Styles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,33 @@ namespace PROG7312_POE.MVC.View.Pages
         public ServiceStatusPage()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// Navigate to the Home Page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            var parentWindow = Window.GetWindow(this) as MainWindow;
+            var home = new HomePg();
+            parentWindow.RbtnHome.IsChecked = true;
+            parentWindow.ContentPane.Content = home;
+        }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Navigate to the View Reports Page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnReports_Click(object sender, RoutedEventArgs e)
+        {
+            var parentWindow = Window.GetWindow(this) as MainWindow;
+            var reports = new ViewReportPg();
+            parentWindow.RbtnHome.IsChecked = true;
+            parentWindow.ContentPane.Content = reports;
         }
     }
 }

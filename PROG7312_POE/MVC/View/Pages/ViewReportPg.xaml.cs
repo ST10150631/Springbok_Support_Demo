@@ -15,7 +15,10 @@ namespace PROG7312_POE.MVC.View.Pages
 {
     public partial class ViewReportPg : Page
     {
-
+        /// <summary>
+        /// Constructor for the ViewReportPg class
+        /// </summary>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public ViewReportPg()
         {
             InitializeComponent();
@@ -24,32 +27,14 @@ namespace PROG7312_POE.MVC.View.Pages
             ReportItemsControl.ItemsSource = MainController.reportController.ReportData;
 
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
-        private void LoadPDF(byte[] byteStream)
-        {
-            try
-            {
-                // Save ByteStream to a temporary file
-                string tempFilePath = Path.GetTempFileName() + ".pdf";
-                File.WriteAllBytes(tempFilePath, byteStream);
-
-                // Open the file with the default PDF viewer
-                Process.Start(new ProcessStartInfo(tempFilePath) { UseShellExecute = true });
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
-        }
-
-        private void displayReports()
-        {
-            foreach (var report in MainController.reportController.ReportData)
-            {
-                ReportItemsControl.Items.Add(report);
-            }
-        }
-
+        /// <summary>
+        /// Opens the PDF file when the button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnOpenPdf_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -68,7 +53,14 @@ namespace PROG7312_POE.MVC.View.Pages
                 }
             }
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// when the button is clicked, the video is played
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnPlayVideo_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -85,7 +77,14 @@ namespace PROG7312_POE.MVC.View.Pages
                 }
             }
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        ///  Navigate to the Home page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as MainWindow;
@@ -93,7 +92,14 @@ namespace PROG7312_POE.MVC.View.Pages
             parentWindow.RbtnHome.IsChecked = true;
             parentWindow.ContentPane.Content = homePg;
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Plays or pauses the video when the play button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnVideoPlay_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -123,6 +129,23 @@ namespace PROG7312_POE.MVC.View.Pages
                 }
             }
         }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Navigate to the Service Status page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        private void BtnStatus_Click(object sender, RoutedEventArgs e)
+        {
+            var parentWindow = Window.GetWindow(this) as MainWindow;
+            var statusPg = new ServiceStatusPage();
+            parentWindow.RbtnHome.IsChecked = true;
+            parentWindow.ContentPane.Content = statusPg;
+        }
+        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
     }
 }
+//=============================================================================== End of File =============================================================================

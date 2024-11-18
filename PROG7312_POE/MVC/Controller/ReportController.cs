@@ -1,6 +1,5 @@
 ﻿using PROG7312_POE.MVC.Model;
 using PROG7312_POE.MVC.Model.Tree_Structures;
-using PROG7312_POE.MVC.Model.Tree_Structures.PROG7312_POE.MVC.Model.Tree_Structures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,11 +17,7 @@ namespace PROG7312_POE.MVC.Controller
         /// </summary>
         private ObservableCollection<ReportModel> _reportData;
 
-        /// <summary>
-        /// Holds the report min heap instance
-        /// </summary>
-        ReportMinHeap reportMinHeap;
-
+        
         /// <summary>
         /// Instance of the category general tree
         /// </summary>
@@ -67,7 +62,6 @@ namespace PROG7312_POE.MVC.Controller
         {
             categoryGeneralTree = new CategoryGeneralTree();
             _reportData = new ObservableCollection<ReportModel>();
-             reportMinHeap = new ReportMinHeap();
             CreateDummyData();
         }
         //======================================================= End of Method ===================================================
@@ -105,7 +99,6 @@ namespace PROG7312_POE.MVC.Controller
             ReportData.Add(report);
             ReportList.Add(report);
             locationGraph.AddReport(report);
-            reportMinHeap.Insert(report);
             categoryGeneralTree.AddReportToCategory(report.ReportType, report);
             OnPropertyChanged(nameof(ReportData));
         }

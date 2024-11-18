@@ -54,9 +54,9 @@ namespace PROG7312_POE.MVVM.View.Pages
         private void BtnServiceStat_Click(object sender, RoutedEventArgs e)
         {
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-            ViewReportPg viewReportPg = new ViewReportPg();
+            ServiceStatusPage service = new ServiceStatusPage();
             parentWindow.RbtnStatus.IsChecked = true;
-            parentWindow.ContentPane.Content = viewReportPg;
+            parentWindow.ContentPane.Content = service;
         }
     }
 }

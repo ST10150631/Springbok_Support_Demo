@@ -9,13 +9,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ViewReportPg">
     <ScrollViewer>
-        <Grid Background="{DynamicResource PrimaryBrush}">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
 
                 <Button x:Name="BtnBack" Style="{DynamicResource btnPrimary}" Click="BtnBack_Click" Margin="10">
                     <StackPanel Orientation="Horizontal">
@@ -24,6 +24,12 @@
                     </StackPanel>
                 </Button>
                 <TextBlock Text="Reports :" Style="{DynamicResource TitleForeground}" Margin="140,10,10,10" HorizontalAlignment="Center"/>
+                <Button x:Name="BtnStatus" Style="{DynamicResource btnPrimary}" Background="{DynamicResource TertiaryBrush}" HorizontalAlignment="Right"  Margin="200,10,10,10" Click="BtnStatus_Click">
+                    <StackPanel Orientation="Horizontal" >
+                        <fa:IconImage  Icon="DigitalTachograph" Width="30" Foreground="White" Margin="10"/>
+                        <TextBlock Text="Service Status" Style="{DynamicResource TxtPrimary}" Margin="10"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
 
 
@@ -31,7 +37,7 @@
             <ItemsControl Name="ReportItemsControl" Margin="0" ItemsSource="{Binding ReportData}" Grid.Row="1">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="{DynamicResource ForegroundBrush}" BorderThickness="1" CornerRadius="10" Margin="10">
+                        <Border BorderBrush="{DynamicResource ForegroundBrush}" Background="{DynamicResource PrimaryBrush}" BorderThickness="1" CornerRadius="10" Margin="10">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
