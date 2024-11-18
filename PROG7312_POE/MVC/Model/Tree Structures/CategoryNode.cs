@@ -16,7 +16,7 @@ namespace PROG7312_POE.MVC.Model.Tree_Structures
         /// <summary>
         /// Binary search tree of reports
         /// </summary>
-        public ReportBinarySearchTree Reports { get; set; }
+        public ReportAVL_Tree Reports { get; set; }
 
         /// <summary>
         /// Constructor
@@ -27,7 +27,7 @@ namespace PROG7312_POE.MVC.Model.Tree_Structures
         {
             Content = content;
             Children = new List<CategoryNode>();
-            Reports = new ReportBinarySearchTree();
+            Reports = new ReportAVL_Tree();
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 

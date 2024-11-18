@@ -21,6 +21,11 @@ namespace PROG7312_POE.MVC.Controller.Tree_Structures
         public ReportNode left, right;
 
         /// <summary>
+        /// Height of the node
+        /// </summary>
+        public int height;
+
+        /// <summary>
         /// constructor
         /// </summary>
         /// <param name="item"></param>
@@ -29,6 +34,7 @@ namespace PROG7312_POE.MVC.Controller.Tree_Structures
         {
             data = item;
             left = right = null;
+            height = 0;
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
     }

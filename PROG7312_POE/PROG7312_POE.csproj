@@ -155,7 +155,7 @@
     <Compile Include="MVC\Controller\ReportController.cs" />
     <Compile Include="MVC\Controller\MainController.cs" />
     <Compile Include="MVC\Model\Tree Structures\ProvinceNode.cs" />
-    <Compile Include="MVC\Model\Tree Structures\ReportBinarySearchTree.cs" />
+    <Compile Include="MVC\Model\Tree Structures\ReportAVL_Tree.cs" />
     <Compile Include="MVC\Model\Tree Structures\CategoryGeneralTree.cs" />
     <Compile Include="MVC\Model\Tree Structures\CategoryNode.cs" />
     <Compile Include="MVC\Model\Tree Structures\ReportLocationGraph.cs" />
