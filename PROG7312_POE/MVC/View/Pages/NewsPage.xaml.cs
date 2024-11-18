@@ -77,7 +77,7 @@ namespace PROG7312_POE.MVC.View.Pages
 
             if (SelectedEvent == null) return;
 
-            MainController.newsController.UpdateCategoryScore(SelectedEvent.Name);
+            MainController.newsController.AddCategoryScore(SelectedEvent.Name);
 
             // Display event details
             this.TxtEventName.Text = SelectedEvent.EventDetails.TryGetValue("Name", out string eventName) ? eventName : "No Name";

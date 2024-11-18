@@ -1,4 +1,5 @@
 ﻿using PROG7312_POE.MVC.Model;
+using PROG7312_POE.MVC.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,17 +19,13 @@ namespace PROG7312_POE.MVC.Controller
         /// <summary>
         /// Holds Categries as a hashSet
         /// </summary>
-        public HashSet<string> Categories ;
+        public HashSet<string> Categories;
         /// <summary>
         /// Holds categories to be displayed as a list
         /// </summary>
         public ObservableCollection<string> CategoryList { get; set; }
         // List to store event models
         private List<EventsModel> _events;
-        /// <summary>
-        /// Holds Category Scores
-        /// </summary>
-        private Dictionary<string,int> _categoryScores;
         /// <summary>
         /// Property to get or set events list, triggers property change notification
         /// </summary>
@@ -69,7 +66,6 @@ namespace PROG7312_POE.MVC.Controller
         public NewsController()
         {
             Categories = new HashSet<string>();
-            _categoryScores = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
             //Pre populate the categories
             Categories.Add("General".ToUpper());
             Categories.Add("Sport".ToUpper());
@@ -93,28 +89,11 @@ namespace PROG7312_POE.MVC.Controller
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public void AddCategoryScore(string category)
         {
-            if (!_categoryScores.ContainsKey(category))
-            {
-                _categoryScores[category] = 0;
-                Categories.Add(category);
-            }
-        }
-        //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
-        /// <summary>
-        /// Adds Score to a category
-        /// </summary>
-        /// <param name="Category"></param>
-        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        public void UpdateCategoryScore(string category)
-        {
-            if (_categoryScores.ContainsKey(category))
-            {
-                _categoryScores[category]++;
-            }
-            else
-            {
-                AddCategoryScore(category);
-                _categoryScores[category]++;
+            foreach (var e in Events){
+                if (e.EventDetails["Category"].Equals(category, StringComparison.OrdinalIgnoreCase))
+                {
+                    e.RelevenceScore ++ ;
+                }
             }
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -129,7 +108,6 @@ namespace PROG7312_POE.MVC.Controller
             Events.Add(newEvent);
             var category = newEvent.EventDetails["Category"];
             AddCategoryScore(category); // Ensure category exists
-            UpdateCategoryScore(category); // Increment score
 
             Categories.Add(newEvent.EventDetails["Category"]);
             CategoryList = new ObservableCollection<string>(Categories);
@@ -180,7 +158,7 @@ namespace PROG7312_POE.MVC.Controller
             var associatedEvent = GetEventByName(eventName);
             if (associatedEvent != null)
             {
-                UpdateCategoryScore(associatedEvent.EventDetails["Category"]);
+                AddCategoryScore(associatedEvent.EventDetails["Category"]);
                 announcement.Event = eventName;
             }
 
@@ -202,7 +180,7 @@ namespace PROG7312_POE.MVC.Controller
             if (evnt != null)
             {
                 var category = evnt.EventDetails["Category"];
-                UpdateCategoryScore(category);
+                AddCategoryScore(category);
                 evnt.RelevenceScore += 2;
             }
         }// ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -215,51 +193,45 @@ namespace PROG7312_POE.MVC.Controller
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         public ObservableCollection<AnnouncementModel> GetReccommended()
         {
-            // Check if there are any categories with scores
-            if (_categoryScores.Count == 0)
-            {
-                MessageBox.Show("No categories with scores found.");
-                return new ObservableCollection<AnnouncementModel>(); // Return empty collection
-            }
-
-            // Check if there are any events
-            var topCategories = _categoryScores
-                .OrderByDescending(cs => cs.Value) // Sort by score, descending
-                .Take(3) // Get at most 3 top-scoring categories
-                .Select(cs => cs.Key) // Extract category names
-                .ToList();
-
-            // Get top events from the top categories
+            // Sort events by relevance score in descending order
             var topEvents = Events
-                .Where(e => topCategories.Contains(e.EventDetails["Category"], StringComparer.OrdinalIgnoreCase))
-                .OrderByDescending(e => e.RelevenceScore) // Sort by relevance score
-                .Take(3) // Get at most 3 events
-                .Select(e => e.EventDetails["Name"]) // Extract event names
+                .OrderByDescending(e => e.RelevenceScore)
                 .ToList();
-            // if no events are found
+
             if (topEvents.Count == 0)
             {
-                MessageBox.Show("No relevant events found in the top categories.");
-                return new ObservableCollection<AnnouncementModel>(); // Return empty collection
+                CustomMessageBox.Show("Not enough Data To recommend announcements. Please browse some more.", "Error");
+                return Announcements; // Return all announcements as fallback
             }
 
-            // get announcements for the top events
-            var recommendedAnnouncements = Announcements
-                .Where(a => topEvents.Contains(a.Event)) // Filter announcements for the top events
-                .OrderByDescending(a => a.Date) // Sort by most recent
-                .Take(3) // Get at most 3 announcements
-                .ToList();
+            // Gather announcements linked to the top events and order them by event scores
+            var recommendedAnnouncements = new List<AnnouncementModel>();
 
-            // if no announcements are found
+            foreach (var topEvent in topEvents)
+            {
+                var eventName = topEvent.EventDetails.ContainsKey("Name") ? topEvent.EventDetails["Name"] : null;
+                if (string.IsNullOrEmpty(eventName))
+                    continue;
+
+                var relatedAnnouncements = Announcements
+                    .Where(a => a.Event == eventName)
+                    .ToList();
+
+                // Add announcements for this event to the list
+                recommendedAnnouncements.AddRange(relatedAnnouncements);
+            }
+
+            // If no announcements are found, show a fallback message
             if (recommendedAnnouncements.Count == 0)
             {
-                MessageBox.Show("No announcements found for the top events.");
-                return new ObservableCollection<AnnouncementModel>(); // Return empty collection
+                CustomMessageBox.Show("Not enough Data To recommend announcements. Please browse some more.", "Error");
+                return Announcements; // Return all announcements as fallback
             }
 
-            // return results :)
+            // Return announcements sorted by the associated event's relevance score
             return new ObservableCollection<AnnouncementModel>(recommendedAnnouncements);
         }
+
         // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
 
@@ -299,10 +271,7 @@ namespace PROG7312_POE.MVC.Controller
                .Where(e => e.EventDetails["Category"].Equals(category, StringComparison.OrdinalIgnoreCase))
                .ToList();
 
-            if (events.Any())
-            {
-                UpdateCategoryScore(category); // Update score each time events are accessed
-            }
+            AddCategoryScore(category); 
 
             return events;
 
@@ -446,6 +415,10 @@ namespace PROG7312_POE.MVC.Controller
         }
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Loads a list of announcement Dummy Data
+        /// </summary>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void LoadAnnoucements()
         {
             ///Announcement Dummy Data
@@ -511,6 +484,7 @@ namespace PROG7312_POE.MVC.Controller
             };
             AddAnnouncement("Cape Town Music Festival", musicFestivalAnnouncement3);
         }
+       //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
         /// <summary>
         /// Notifies listeners of property changes.

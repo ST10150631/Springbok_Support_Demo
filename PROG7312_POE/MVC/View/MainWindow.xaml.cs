@@ -68,7 +68,14 @@ namespace PROG7312_POE.MVVM.View.Styles
         {
             Application.Current.Shutdown();
         }
+        //  ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Resizes the window to full screen and back to normal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start of Method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void BtnResize_Click(object sender, RoutedEventArgs e)
         {
 
@@ -83,7 +90,13 @@ namespace PROG7312_POE.MVVM.View.Styles
 
 
         }
+        // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Various buttons to navigate to different pages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RbtnHome_Checked(object sender, RoutedEventArgs e)
         {
             ContentPane.Navigate(new HomePg());
@@ -117,3 +130,4 @@ namespace PROG7312_POE.MVVM.View.Styles
         //------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
     }
 }
+//=============================================================================== End of File =============================================================================

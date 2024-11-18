@@ -10,7 +10,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
-using MessageBox = System.Windows.MessageBox;
 
 namespace PROG7312_POE.MVC.View.Pages
 {
@@ -99,15 +98,15 @@ namespace PROG7312_POE.MVC.View.Pages
                         mediaDict.Add(media.mediaName, media);
                         LblEventMedia.Text = "Media Added";
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show($"Error adding media: {ex.Message}", "Error", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Error adding media:", "Error");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("No file selected.");
+                CustomMessageBox.Show("No file selected.", "Error");
             }
         }
         // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -157,15 +156,15 @@ namespace PROG7312_POE.MVC.View.Pages
                         mediaModels.Add(media);
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show($"Error adding media: {ex.Message}", "Error", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Error adding media:", "Error");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("No file selected.");
+                CustomMessageBox.Show("No file selected.", "Error");
             }
         }
         // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -314,15 +313,13 @@ namespace PROG7312_POE.MVC.View.Pages
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show("Error Loading image.", "Error", MessageBoxButton.OK);
-                    // Handle exceptions (e.g., file not found, access denied)
-                    throw new Exception($"Error reading file: {ex.Message}", ex);
+                    CustomMessageBox.Show("Error Loading image.", "Error");
 
                 }
             }
             else
             {
-                System.Windows.MessageBox.Show("No file selected");
+                CustomMessageBox.Show("No file selected", "Information");
             }
         }
         // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
@@ -340,7 +337,7 @@ namespace PROG7312_POE.MVC.View.Pages
             {
                 if (string.IsNullOrEmpty(this.EventTxtName.Text))
                 {
-                    MessageBox.Show("Please enter an event name");
+                    CustomMessageBox.Show("Please enter an event name", "Invalid");
                     EventTxtName.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
@@ -348,14 +345,14 @@ namespace PROG7312_POE.MVC.View.Pages
 
                 if (string.IsNullOrEmpty(this.EventTxtDescription.Text))
                 {
-                    MessageBox.Show("Please enter a description");
+                    CustomMessageBox.Show("Please enter a description", "Invalid");
                     EventTxtDescription.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
                 }
                 if (string.IsNullOrEmpty(this.EventTxtVenue.Text))
                 {
-                    MessageBox.Show("Please enter a location");
+                    CustomMessageBox.Show("Please enter a location", "Invalid");
                     EventTxtVenue.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
@@ -363,7 +360,7 @@ namespace PROG7312_POE.MVC.View.Pages
 
                 if (EventDatePickerStart.SelectedDate > EventDatePickerEnd.SelectedDate)
                 {
-                    MessageBox.Show("End Date cannot be first");
+                    CustomMessageBox.Show("End Date cannot be first", "Invalid");
                     isValid = false;
                     return isValid;
                 }
@@ -374,28 +371,28 @@ namespace PROG7312_POE.MVC.View.Pages
             {
                 if(string.IsNullOrEmpty(this.TxtTitle.Text))
                 {
-                    MessageBox.Show("Please enter an announcement title");
+                    CustomMessageBox.Show("Please enter an announcement title", "Invalid");
                     TxtTitle.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
                 }
                 if (string.IsNullOrEmpty(this.TxtDescription.Text))
                 {
-                    MessageBox.Show("Please enter a description");
+                    CustomMessageBox.Show("Please enter a description", "Invalid");
                     TxtDescription.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
                 }
                 if(string.IsNullOrEmpty(this.TxtAuthor.Text))
                 {
-                    MessageBox.Show("Please enter an author");
+                    CustomMessageBox.Show("Please enter an author", "Invalid");
                     TxtAuthor.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
                 }
                 if (string.IsNullOrEmpty(this.TxtLocation.Text))
                 {
-                    MessageBox.Show("Please enter a Location");
+                    CustomMessageBox.Show("Please enter a Location","Invalid");
                     TxtLocation.Style = (Style)FindResource("TxtBxInvalid");
                     isValid = false;
                     return isValid;
@@ -416,7 +413,7 @@ namespace PROG7312_POE.MVC.View.Pages
         {
             mediaDict.Clear();
             this.LblEventMedia.Text = "No Media Selected";
-            MessageBox.Show("All media removed.");
+            CustomMessageBox.Show("Media Removed", "Information");
         }
         // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
@@ -430,7 +427,7 @@ namespace PROG7312_POE.MVC.View.Pages
         {
             logo = null;
             this.LblLogo.Text = "No Logo Selected";
-            MessageBox.Show("Logo removed.");
+            CustomMessageBox.Show("Logo Removed", "Information");
         }
         // ------------------------------------------------------------------------ End of Method ------------------------------------------------------------------------------------------
 
