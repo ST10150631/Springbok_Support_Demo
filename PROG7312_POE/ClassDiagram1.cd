@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PROG7312_POE.MVC.Controller.AppThemes">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>MVC\Controller\AppThemes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Controller.ChartController">
+    <Position X="27.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAgAAAAASAAACAAgAUCAAAAAAiACAAEAEAAABAAAAA=</HashCode>
+      <FileName>MVC\Controller\ChartController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="reportMinHeap" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Controller.DataRow">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAggAAAAAIAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>MVC\Controller\ChartController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Controller.MainController">
+    <Position X="25.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Controller\MainController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="newsController" />
+      <Field Name="reportController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Controller.NewsController" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAACgAYAAABhgDAIAIAgAAggoAAEACAAAAAABABKAA=</HashCode>
+      <FileName>MVC\Controller\NewsController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Controller.ReportController" BaseTypeListCollapsed="true">
+    <Position X="31.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAEAACBAAAAIEAAAAAAgAAAAAAAAAAgBiAQAAA=</HashCode>
+      <FileName>MVC\Controller\ReportController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="categoryGeneralTree" />
+      <Field Name="locationGraph" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.AnnouncementModel">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAggUAAgAIAAAAAAgAAAAABAAAAAAAAAAQ=</HashCode>
+      <FileName>MVC\Model\AnnouncementModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.EventsModel">
+    <Position X="17.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBAIAiAACAAAAAAIQgIAAoAAAAEAAAIEAACAA=</HashCode>
+      <FileName>MVC\Model\EventsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.MediaModel">
+    <Position X="8.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAIEAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\MediaModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.MediaNode">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAGAAAAAAgAABAEAAQAAAAAABAAAABAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\MediaNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.ReportModel">
+    <Position X="35.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAQAAAEAggIxAAEIAAAEQACAAAAAAQAAAAkECAAA=</HashCode>
+      <FileName>MVC\Model\ReportModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.Tree_Structures.CategoryGeneralTree">
+    <Position X="22.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAEACACAAABAQAAAAQBAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\CategoryGeneralTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.Tree_Structures.CategoryNode">
+    <Position X="10.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgCAEAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\CategoryNode.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Reports" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.Tree_Structures.ProvinceNode">
+    <Position X="4.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\ProvinceNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.Tree_Structures.ReportLocationGraph">
+    <Position X="32" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAJAAAAAAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\ReportLocationGraph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Model.Tree_Structures.ReportMinHeap">
+    <Position X="23" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEgAAAAEAAABAAAAQAwAAYABAAEAAAAAgAAAAAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\ReportMinHeap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReportBinarySearchTree">
+    <Position X="12.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEACAAAAAAEABUAgAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\ReportBinarySearchTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVC.Controller.Tree_Structures.ReportNode">
+    <Position X="1.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAQAAAAgAA=</HashCode>
+      <FileName>MVC\Model\Tree Structures\ReportNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PROG7312_POE.MVVM.View.Styles.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEABAAAAAAAAAAAAABAgAAgAICAAAIAAAAABAAAAAAA=</HashCode>
+      <FileName>MVC\View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.Pages.AddEventPg" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAAAAGAAAEBAAAgACQgBAAAAAEAAAAAAAgAAAA=</HashCode>
+      <FileName>MVC\View\Pages\AddEventPg.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="logo" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.Pages.IntroPg" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAEAA=</HashCode>
+      <FileName>MVC\View\Pages\IntroPg.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.Pages.NewsPage" BaseTypeListCollapsed="true">
+    <Position X="19" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQSEAACQAAAIECCAAAAAUAAAAAADAAAAAAAAgACAAIA=</HashCode>
+      <FileName>MVC\View\Pages\NewsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="SelectedEvent" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.Pages.ServiceStatusPage" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAA=</HashCode>
+      <FileName>MVC\View\Pages\ServiceStatusPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.Pages.SettingsPg" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAgABAAAQgAAAAA=</HashCode>
+      <FileName>MVC\View\Pages\SettingsPg.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.Pages.ViewReportPg" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAEAAA=</HashCode>
+      <FileName>MVC\View\Pages\ViewReportPg.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVVM.View.Pages.HomePg" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
+      <FileName>MVC\View\Pages\HomePg.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVVM.View.Pages.NewReportPg" BaseTypeListCollapsed="true">
+    <Position X="35.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAAQAAACAAAAAAIAAAAAIAEAAAAAAAAAAAAEBAIMBA=</HashCode>
+      <FileName>MVC\View\Pages\NewReportPg.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="model" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVC.View.UserControls.ChartUserControl" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\View\UserControls\ChartUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVVM.View.UserControls.UserCntrlLocation" BaseTypeListCollapsed="true">
+    <Position X="14" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\View\UserControls\UserCntrlLocation.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PROG7312_POE.MVVM.View.UserControls.UserCntrlSiya" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\View\UserControls\UserCntrlSiya.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
