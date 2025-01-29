@@ -1,6 +1,4 @@
-# PROG7312_POE
-##Github Link:
-https://github.com/ST10150631/PROG7312_POE/blob/master/README.md
+# Springbok Support C# app demo
 
 ## Introduction:
 Spring Support is a system aimed to aid users in viewing local news and announcements filing service requests and viewing the status of these requests. Springbok Support aims to do this in an engaging and visually pleasing way through the implementation of several engagement strategies. The colours are made to be vibrant and captivating as well as the usage of component movement helps maintain the users attention. The app makes use of a simple UI that will help users make effective use of the app.
